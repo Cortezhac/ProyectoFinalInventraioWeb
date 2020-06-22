@@ -12,6 +12,7 @@ import java.util.ArrayList;
  * @author Admin
  */
 public class CategoriaDAO {
+    
     private final String nombreTabla;
     CRUDUntil utilidades = new CRUDUntil();
     ResultSet miResultSet;
@@ -41,11 +42,23 @@ public class CategoriaDAO {
         }
         return categorias;
     }
-    
+    /**
+     * Toma los datos del objeto y los almacena
+     * @param categoriaGuardar objeto con todos los parametros de categoria 
+     */
     public void guardarRegistro(Categoria categoriaGuardar){
+        //Campos a actualizar
         String camposInsertar = "nom_categoria, estado_categoria";
+        // Nuevos valores en el mismo orden que los campos
         String valoresCampos = "'" + categoriaGuardar.getNom_categoria() + "', '" 
                                    + categoriaGuardar.getEstado_categoria() + "' ";
         utilidades.insertarRegistro(this.nombreTabla, camposInsertar, valoresCampos);
+    }
+    
+    public void actualizarRegistro(Categoria categoriaActualizar, int condicion){
+        String Condicion = " id_categoria = " + String.valueOf(condicion);
+        String camposActualizar = "nom_categoria = '" + categoriaActualizar.getNom_categoria() + 
+                                  "' , estado_categoria = '" + categoriaActualizar.getEstado_categoria() + "' ";
+        utilidades.actualizarRegistros(this.nombreTabla, camposActualizar, Condicion);
     }
 }

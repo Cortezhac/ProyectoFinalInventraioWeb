@@ -4,13 +4,13 @@
  * and open the template in the editor.
  */
 package Test;
-
+;
 import Modelos.Categoria;
 import Modelos.CategoriaDAO;
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -18,9 +18,10 @@ import java.util.ArrayList;
  * @author Admin
  */
 public class Pruebas {
-    public static void main(String[] args) throws IOException{
-        guardar();
+    public static void main(String[] args) throws IOException, SQLException{
+        //guardar();
         listarCategoria();
+        //actualizar();
     }
     
     public static void guardar() throws IOException{
@@ -60,5 +61,28 @@ public class Pruebas {
             System.out.println(" Estado " + categoria.getEstado_categoria());
             System.out.println("=========================");
         }
+    }
+    
+    public static void actualizar() throws IOException, SQLException{
+        BufferedReader teclado = new BufferedReader(new InputStreamReader(System.in));
+        
+        System.out.println("Registro que desea actualizar");
+        int busquedaid = Integer.parseInt(teclado.readLine());
+        
+        System.out.println("Nombre categoria");
+        String nombre = teclado.readLine();
+        
+        System.out.println("Estado Categoria");
+        int estado = Integer.parseInt(teclado.readLine());
+        
+        // Llamo utilidades para usar sus funciones de acceso de datos
+        CategoriaDAO utilidades = new CategoriaDAO("tb_categoria");
+        // Objeto a llenar
+        Categoria categorianueva = new Categoria();
+        categorianueva.setNom_categoria(nombre);
+        categorianueva.setEstado_categoria(estado);
+        
+        // Guarda los registros
+        utilidades.actualizarRegistro(categorianueva, busquedaid);
     }
 }

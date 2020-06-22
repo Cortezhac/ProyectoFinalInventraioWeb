@@ -52,14 +52,14 @@ public class CRUDUntil {
      * @return boolean false | true 
      */
     public boolean actualizarRegistros(String nombreTabla, String valoresActualizar, String condicion){
-        String QuerySQL = "UPDATE " + nombreTabla + " SET " + valoresActualizar + " WHERE " + condicion;
+        String QuerySQL = "UPDATE " + nombreTabla + " SET " + valoresActualizar + " WHERE " + condicion + " ;";
         int resultado = 0;
         try {
             COM = SQLConexion.openConnection();
             sqlStatement = COM.createStatement();
             resultado = sqlStatement.executeUpdate(QuerySQL);
         } catch (SQLException e) {
-            System.out.println("Error en la actualizacion " + e);
+            System.out.println("Error en la actualizacion " + e + "\n " + QuerySQL);
         }
         boolean estado = resultado != 0;
         return estado;
@@ -106,7 +106,7 @@ public class CRUDUntil {
      * @param condicion Condicion de busqueda Formato: nombre_campo = valor_campo
      * @return datosEncontrados 
      */
-    public ResultSet buscarRegistro(String nombreTabla, String condicion){
+    public ResultSet buscarRegistro(String nombreTabla, int condicion){
         String QuerySQL = "SELECT * FROM " + nombreTabla + " WHERE " + condicion + " ;";
         ResultSet datosEncontrados = null;
         try {

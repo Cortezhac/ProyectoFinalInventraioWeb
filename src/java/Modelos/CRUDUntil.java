@@ -69,6 +69,27 @@ public class CRUDUntil {
         return estado;
     }
     /**
+     * Se debe haber buscado el registro a elliminar previamente antes de usar esta funcion
+     * @param nombreTabla Tabla que se va utilizar
+     * @param condicion Condicion de eliminacion Formato: nombre_campo = valores_campo 
+     * @return boolean false | true
+     */
+    public boolean eliminarRegistro(String nombreTabla , String condicion){
+        String QuerySQL = "DELETE FROM " + nombreTabla + " WHERE " + condicion + " ;";
+        int resultado = 0;
+        try {
+            COM = SQLConexion.openConnection();
+            sqlStatement = COM.createStatement();
+            resultado = sqlStatement.executeUpdate(QuerySQL);
+            sqlStatement.close();
+            COM.close();
+        } catch (SQLException e) {
+            System.out.println("Error en la eliminacionn " + e);
+        }
+        boolean estado = resultado != 0;
+        return estado;
+    }
+    /**
      * Devuelve un conjunto de datos de la tabla especificada
      * @param nombreTabla Tabla de la que se traera la informacion
      * @return datosEncontrados Informacion encontrada
@@ -83,7 +104,7 @@ public class CRUDUntil {
             sqlStatement.close();
             COM.close();
         } catch (SQLException e) {
-            System.out.println("");
+            System.out.println("Erro en la busqueda " + e );
         }
         return datosEncontrados;
     }
@@ -103,7 +124,7 @@ public class CRUDUntil {
             sqlStatement.close();
             COM.close();
         } catch (SQLException e) {
-            System.out.println("");
+            System.out.println("Error en la busqueda por condicion " + e);
         }
         return datosEncontrados;
     }

@@ -17,6 +17,10 @@ public class CRUDUntil {
     Statement sqlStatement;
     Connection COM;
     Conexion SQLConexion = new Conexion();
+    
+    public CRUDUntil(){
+        
+    }
     /**
      * Inserta los nuevos registros en la base de datos
      * @param nombreTabla Nombre de la tabla que se va a utilizar
@@ -38,4 +42,24 @@ public class CRUDUntil {
         return estado;
     }
     
+    /**
+     * Actualiza los valore de la base de datos definido por <code>condicion</code>
+     * @param nombreTabla Tabla de labase de datos que se va a utilizar
+     * @param valoresActualizar Formato a utilizar : nombre_campo = nuevo_valor , nombre_campo2 = nuevo_valor
+     * @param condicion nombre_campo = campo_buscado generalmente el primary key
+     * @return 
+     */
+    public boolean actualizarRegistros(String nombreTabla, String valoresActualizar, String condicion){
+        String QuerySQL = "UPDATE " + nombreTabla + " SET " + valoresActualizar + " WHERE " + condicion;
+        int resultado = 0;
+        try {
+            COM = SQLConexion.openConnection();
+            sqlStatement = COM.createStatement();
+            resultado = sqlStatement.executeUpdate(QuerySQL);
+        } catch (SQLException e) {
+            System.out.println("Error en la actualizacion " + e);
+        }
+        boolean estado = resultado != 0;
+        return estado;
+    }
 }

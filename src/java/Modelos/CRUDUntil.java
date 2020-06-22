@@ -37,7 +37,7 @@ public class CRUDUntil {
             sqlStatement = COM.createStatement();
             resultado = sqlStatement.executeUpdate(QuerySQL);
         } catch (SQLException e) {
-            System.out.println("Error de insercion " + e);
+            System.out.println("Error de insercion " + e + "\n" + QuerySQL);
         }
             
         boolean estado = resultado != 0;
@@ -78,7 +78,7 @@ public class CRUDUntil {
             sqlStatement = COM.createStatement();
             resultado = sqlStatement.executeUpdate(QuerySQL);
         } catch (SQLException e) {
-            System.out.println("Error en la eliminacionn " + e);
+            System.out.println("Error en la eliminacionn " + e + "\n" + QuerySQL);
         }
         boolean estado = resultado != 0;
         return estado;
@@ -96,7 +96,7 @@ public class CRUDUntil {
             sqlStatement = COM.createStatement();
             datosEncontrados = sqlStatement.executeQuery(QuerySQL);
         } catch (SQLException e) {
-            System.out.println("Error en la busqueda " + e );
+            System.out.println("Error en la busqueda " + e + "\n" + QuerySQL);
         }
         return datosEncontrados;
     }
@@ -114,7 +114,7 @@ public class CRUDUntil {
             sqlStatement = COM.createStatement();
             datosEncontrados = sqlStatement.executeQuery(QuerySQL);
         } catch (SQLException e) {
-            System.out.println("Error en la busqueda por condicion " + e);
+            System.out.println("Error en la busqueda por condicion " + e + "\n" + QuerySQL);
         }
         return datosEncontrados;
     }

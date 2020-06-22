@@ -34,7 +34,7 @@ public class Pruebas {
         int estado = Integer.parseInt(teclado.readLine());
         
         // Llamo utilidades para usar sus funciones de acceso de datos
-        CategoriaDAO utilidades = new CategoriaDAO("tb_categoria");
+        CategoriaDAO utilidades = new CategoriaDAO("tbego_categoria");
         // Objeto a llenar
         Categoria categorianueva = new Categoria();
         categorianueva.setNom_categoria(nombre);

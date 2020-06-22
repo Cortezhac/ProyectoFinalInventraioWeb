@@ -6,6 +6,7 @@
 package Modelos;
 
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -35,9 +36,12 @@ public class CRUDUntil {
             COM = SQLConexion.openConnection();
             sqlStatement = COM.createStatement();
             resultado = sqlStatement.executeUpdate(QuerySQL);
+            sqlStatement.close();
+            COM.close();
         } catch (SQLException e) {
             System.out.println("Error de insercion " + e);
         }
+            
         boolean estado = resultado != 0;
         return estado;
     }
@@ -47,7 +51,7 @@ public class CRUDUntil {
      * @param nombreTabla Tabla de labase de datos que se va a utilizar
      * @param valoresActualizar Formato a utilizar : nombre_campo = nuevo_valor , nombre_campo2 = nuevo_valor
      * @param condicion nombre_campo = campo_buscado generalmente el primary key
-     * @return 
+     * @return boolean false | true 
      */
     public boolean actualizarRegistros(String nombreTabla, String valoresActualizar, String condicion){
         String QuerySQL = "UPDATE " + nombreTabla + " SET " + valoresActualizar + " WHERE " + condicion;
@@ -56,10 +60,51 @@ public class CRUDUntil {
             COM = SQLConexion.openConnection();
             sqlStatement = COM.createStatement();
             resultado = sqlStatement.executeUpdate(QuerySQL);
+            sqlStatement.close();
+            COM.close();
         } catch (SQLException e) {
             System.out.println("Error en la actualizacion " + e);
         }
         boolean estado = resultado != 0;
         return estado;
+    }
+    /**
+     * Devuelve un conjunto de datos de la tabla especificada
+     * @param nombreTabla Tabla de la que se traera la informacion
+     * @return datosEncontrados Informacion encontrada
+     */
+    public ResultSet buscarRegistro(String nombreTabla){
+        String QuerySQL = "SELECT * FROM " + nombreTabla + " ;";
+        ResultSet datosEncontrados = null;
+        try {
+            COM = SQLConexion.openConnection();
+            sqlStatement = COM.createStatement();
+            datosEncontrados = sqlStatement.executeQuery(QuerySQL);
+            sqlStatement.close();
+            COM.close();
+        } catch (SQLException e) {
+            System.out.println("");
+        }
+        return datosEncontrados;
+    }
+    /**
+     * Retorna un conjunto de valores de la base de datos
+     * @param nombreTabla Tabla de la cual se traera la informacion
+     * @param condicion Condicion de busqueda Formato: nombre_campo = valor_campo
+     * @return datosEncontrados 
+     */
+    public ResultSet buscarRegistro(String nombreTabla, String condicion){
+        String QuerySQL = "SELECT * FROM " + nombreTabla + " WHERE " + condicion + " ;";
+        ResultSet datosEncontrados = null;
+        try {
+            COM = SQLConexion.openConnection();
+            sqlStatement = COM.createStatement();
+            datosEncontrados = sqlStatement.executeQuery(QuerySQL);
+            sqlStatement.close();
+            COM.close();
+        } catch (SQLException e) {
+            System.out.println("");
+        }
+        return datosEncontrados;
     }
 }

@@ -29,7 +29,7 @@ public class Conexion {
      * Constructor asigna los valores de la conexion necesarios para abrir Connection
      */
     public Conexion(){
-        this.SERVIDOR = "";
+        this.SERVIDOR = "jdbc:mysql://localhost:3306/bd_inventario?zeroDateTimeBehavior=convertToNull";
         this.USUARIO = "root";
         this.CLAVE = "";
     }

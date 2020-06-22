@@ -19,7 +19,7 @@ import java.util.ArrayList;
  */
 public class Pruebas {
     public static void main(String[] args) throws IOException{
-        //guardar();
+        guardar();
         listarCategoria();
     }
     
@@ -32,26 +32,33 @@ public class Pruebas {
         System.out.println("Estado Categoria");
         int estado = Integer.parseInt(teclado.readLine());
         
+        // Llamo utilidades para usar sus funciones de acceso de datos
         CategoriaDAO utilidades = new CategoriaDAO("tb_categoria");
+        // Objeto a llenar
         Categoria categorianueva = new Categoria();
-        
         categorianueva.setNom_categoria(nombre);
         categorianueva.setEstado_categoria(estado);
+        // Guarda los registros
+        utilidades.guardarRegistro(categorianueva);
     }
     
     
     public static void listarCategoria(){
-        
+        // Se llamas las utilidades y se le da el nombre de la tabla a usar
         CategoriaDAO utilidadeDAO = new CategoriaDAO("tb_categoria");
+        // Lista de destino
         ArrayList<Categoria> lista = new ArrayList<>();
+        // Se usa la funcion de listarRegistros de utilidades
         lista = utilidadeDAO.listarRegistros();
+        //Se extraen los registros
         for(int i = 0 ; i < lista.size(); i++){
             System.out.println("Registros encontrados");
             Categoria categoria = lista.get(i);
             
-            System.out.println("id " + categoria.getId_categoria());
-            System.out.println("Nombre " + categoria.getNom_categoria());
-            System.out.println("Estado " + categoria.getEstado_categoria());
+            System.out.print("id " + categoria.getId_categoria());
+            System.out.print(" Nombre " + categoria.getNom_categoria());
+            System.out.println(" Estado " + categoria.getEstado_categoria());
+            System.out.println("=========================");
         }
     }
 }

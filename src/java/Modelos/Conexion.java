@@ -40,7 +40,7 @@ public class Conexion {
      */
     public Connection openConnection(){
         try {
-            Class.forName(DRIVER);
+            Class.forName("com.mysql.jdbc.Driver");
             COM = DriverManager.getConnection(SERVIDOR, USUARIO, CLAVE);
         } catch (ClassNotFoundException | SQLException ex) {
             System.out.println("Error Conexion " + ex);

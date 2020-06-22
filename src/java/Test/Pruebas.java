@@ -5,10 +5,53 @@
  */
 package Test;
 
+import Modelos.Categoria;
+import Modelos.CategoriaDAO;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+
 /**
  *
  * @author Admin
  */
 public class Pruebas {
+    public static void main(String[] args) throws IOException{
+        //guardar();
+        listarCategoria();
+    }
     
+    public static void guardar() throws IOException{
+        BufferedReader teclado = new BufferedReader(new InputStreamReader(System.in));
+        
+        System.out.println("Nombre categoria");
+        String nombre = teclado.readLine();
+        
+        System.out.println("Estado Categoria");
+        int estado = Integer.parseInt(teclado.readLine());
+        
+        CategoriaDAO utilidades = new CategoriaDAO("tb_categoria");
+        Categoria categorianueva = new Categoria();
+        
+        categorianueva.setNom_categoria(nombre);
+        categorianueva.setEstado_categoria(estado);
+    }
+    
+    
+    public static void listarCategoria(){
+        
+        CategoriaDAO utilidadeDAO = new CategoriaDAO("tb_categoria");
+        ArrayList<Categoria> lista = new ArrayList<>();
+        lista = utilidadeDAO.listarRegistros();
+        for(int i = 0 ; i < lista.size(); i++){
+            System.out.println("Registros encontrados");
+            Categoria categoria = lista.get(i);
+            
+            System.out.println("id " + categoria.getId_categoria());
+            System.out.println("Nombre " + categoria.getNom_categoria());
+            System.out.println("Estado " + categoria.getEstado_categoria());
+        }
+    }
 }

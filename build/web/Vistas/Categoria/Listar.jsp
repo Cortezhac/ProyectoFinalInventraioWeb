@@ -35,8 +35,8 @@
             <td><%=categoria.getNom_categoria()%></td>
             <td><%=categoria.getEstado_categoria()%></td>
             <td>
+                <a href="Categorias?accion=E&id=<%=categoria.getId_categoria()%>">Editar</a>
                 <a href="#">Eliminar</a>
-                <a href="#">Editar</a>
             </td>
         </tr>
         

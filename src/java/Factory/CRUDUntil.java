@@ -106,7 +106,7 @@ public class CRUDUntil {
      * @param condicion Condicion de busqueda Formato: nombre_campo = valor_campo
      * @return datosEncontrados 
      */
-    public ResultSet buscarRegistro(String nombreTabla, int condicion){
+    public ResultSet buscarRegistro(String nombreTabla, String condicion){
         String QuerySQL = "SELECT * FROM " + nombreTabla + " WHERE " + condicion + " ;";
         ResultSet datosEncontrados = null;
         try {

@@ -12,6 +12,8 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>Categorias</h1>
+        <jsp:useBean id="Lista" scope="session" class="java.util.ArrayList"/>
+        
     </body>
 </html>

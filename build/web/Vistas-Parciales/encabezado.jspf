@@ -1,0 +1,21 @@
+<%-- any content can be specified here e.g.: --%>
+<%@ page pageEncoding="UTF-8" %>
+<div>
+    <div class="encabezado">
+        <div class="container">
+            
+            Sistema de control de Inventario
+            
+            <a href="index" id="bt" class="btn btn-primary btn-sm ml-auto glyphicon glyphicon-home "  role="button">&nbsp;Inicio</a>
+            <a href="categorias?opcion=listar" id="bt" class="btn btn-primary btn-sm glyphicon glyphicon-edit" role="button">&nbsp;Categorias</a>
+            <a href="prioductos?opcion=listar" id="bt" class="btn btn-primary btn-sm glyphicon glyphicon-list-alt" role="button">&nbsp;Productos</a>
+        
+        </div>
+        
+        
+    </div>
+    <div class="container">
+    <div class="contenido">
+        
+        <!--   Este div no se cierra aqui, se cierran en pie.jspf-->
+

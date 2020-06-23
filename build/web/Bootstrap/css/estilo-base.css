@@ -1,0 +1,27 @@
+
+.encabezado{
+    color: black;
+    font-size: 20px;
+    height: 40px;
+    background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
+    padding: 4px;
+}
+
+.contenido{
+    padding: 0px;
+}
+
+.pie{
+    background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
+    color: black;
+    height: 36px;
+    padding: 10px;
+    text-align: center;
+}
+
+#bt{
+    background-image: linear-gradient(-225deg, #5D9FFF 0%, #B8DCFF 48%, #6BBBFF 100%);
+    color: black;
+    padding: 5px;
+    border-radius: 10px;
+}

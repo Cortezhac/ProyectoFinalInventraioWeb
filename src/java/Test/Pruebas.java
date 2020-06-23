@@ -6,7 +6,7 @@
 package Test;
 ;
 import Modelos.Categoria;
-import Modelos.CategoriaDAO;
+import DAO.CategoriaDAO;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;

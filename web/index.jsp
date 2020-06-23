@@ -14,9 +14,9 @@
     </head>
     <body>
         <!-- Vista parcial de la parte superior de nuestra aplicacion-->
-       <%@include file="/Vistas-Parciales/encabezado.jspf" %>
+        <%@include file="/Vistas-Parciales/encabezado.jspf" %>
         <h3>Bienvenido</h3>
-        
+        <a href="Categorias">Categorias</a>
         <%@include file="/Vistas-Parciales/pie.jspf" %>
         
     </body>

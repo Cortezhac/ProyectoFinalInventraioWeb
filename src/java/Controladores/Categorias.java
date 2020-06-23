@@ -5,6 +5,7 @@
  */
 package Controladores;
 
+import DAO.CategoriaDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -47,6 +48,10 @@ public class Categorias extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        CategoriaDAO categoria = new CategoriaDAO("tb_categoria");
+        
+        request.getSession(true).setAttribute("Lista", categoria.listarRegistros());
+        request.getRequestDispatcher("Vistas/Categoria/Listar.jsp").forward(request, response);
         processRequest(request, response);
     }
 

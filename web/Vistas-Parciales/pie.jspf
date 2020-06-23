@@ -2,7 +2,8 @@
 <%@ page pageEncoding="UTF-8" %>
 <!--Aqui se deben cerrar los div abiertoss en encabezado.jspf-->
 </div>
+</div>
     <div class="pie">
-        &COPY; Jose Ernesto AV;
+        &COPY;AVENGERS JAVA;
     </div>
 </div>

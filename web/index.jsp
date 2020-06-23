@@ -1,7 +1,7 @@
 <%-- 
     Document   : index
-    Created on : 21-jun-2020, 19:48:15
-    Author     : Admin
+    Created on : 06-14-2020, 10:47:46 PM
+    Author     : Ernesto
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -9,11 +9,15 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Control de Inventario</title> 
+        <%@include file="/Vistas-Parciales/css-js.jspf" %>
     </head>
     <body>
-       <%
-           request.getRequestDispatcher("index").forward(request, response);
-       %>
+        <!-- Vista parcial de la parte superior de nuestra aplicacion-->
+       <%@include file="/Vistas-Parciales/encabezado.jspf" %>
+        <h3>Bienvenido</h3>
+        
+        <%@include file="/Vistas-Parciales/pie.jspf" %>
+        
     </body>
 </html>

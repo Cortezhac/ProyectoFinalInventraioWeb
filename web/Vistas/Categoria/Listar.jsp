@@ -21,6 +21,8 @@
                 <th>ESTADO</th>
                 <th>ACCIONES</th>
             </thead>
+            <tbody>
+                
         <jsp:useBean id="Lista" scope="session" class="java.util.ArrayList"/>
         <% 
             for(int i = 0; i < Lista.size(); i++ ){
@@ -28,11 +30,20 @@
 
         %>
         
-        
+        <tr>
+            <td><%=categoria.getId_categoria()%></td>
+            <td><%=categoria.getNom_categoria()%></td>
+            <td><%=categoria.getEstado_categoria()%></td>
+            <td>
+                <a href="#">Eliminar</a>
+                <a href="#">Editar</a>
+            </td>
+        </tr>
         
         <% 
             }        
         %>
+            </tbody>
         </table>
     </body>
 </html>

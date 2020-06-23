@@ -1,8 +1,10 @@
 /*
  * Es necesario Agregar el nombre de la tabla para DAO
  */
-package Modelos;
+package DAO;
 
+import Factory.CRUDUntil;
+import Modelos.Categoria;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;

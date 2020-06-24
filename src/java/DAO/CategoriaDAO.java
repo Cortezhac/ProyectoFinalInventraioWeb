@@ -89,4 +89,11 @@ public class CategoriaDAO {
         boolean estado = utilidades.actualizarRegistros(this.nombreTabla, camposActualizar, condicion);
         return estado;
     }
+    
+    public boolean eliminarRegistros(String condicionEliminacion){
+        boolean estado;
+        estado = utilidades.eliminarRegistro(this.nombreTabla, condicionEliminacion);
+        return  estado;
+    }
+        
 }

@@ -40,7 +40,7 @@
             <td><%=categoria.getEstado_categoria()%></td>
             <td>
                 <a href="Categorias?accion=E&id=<%=categoria.getId_categoria()%>">Editar</a>
-                <a href="#">Eliminar</a>
+                <a href="Categorias?accion=DEL&id=<%=categoria.getId_categoria()%>">Eliminar</a>
             </td>
         </tr>
         

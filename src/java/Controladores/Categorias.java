@@ -49,7 +49,21 @@ public class Categorias extends HttpServlet {
                 doGetEditar(request, response, id); // llmam a la funcion de editar 
             }else if(accion.equalsIgnoreCase("AD")){
                 request.getRequestDispatcher("Vistas/Categoria/Agregar.jsp").forward(request, response);
-            }
+            }else if(accion.equalsIgnoreCase("DEL")){
+                
+                String id = request.getParameter("id");
+                // Prepara los datos que se muestran en la vista Eliminar
+                HttpSession categoriaEliminar  = request.getSession(true);
+                id = " id_categoria = " + id;
+                categoriaEliminar.setAttribute("ListaEliminar", categoria.listarRegistros(id));
+                // Llama a la vista eliminar
+                request.getRequestDispatcher("Vistas/Categoria/Eliminar.jsp").forward(request, response);
+            }else if (accion.equalsIgnoreCase("Eliminar")){
+                    System.out.println("Si funciona");
+                    Integer idEliminar = Integer.parseInt(request.getParameter("id"));
+                    doGetEliminar(request, response, idEliminar);
+                    request.getRequestDispatcher("index.jsp").forward(request, response);
+                }
         }else {
             HttpSession Resultado = request.getSession(); // Creo una session
             // Guardo los valores en la session bajo el nombre de Lista
@@ -112,6 +126,15 @@ public class Categorias extends HttpServlet {
     protected void doPostAgregar(HttpServletRequest request, HttpServletResponse response, Categoria categoria){
         CategoriaDAO categoriaDAO = new CategoriaDAO("tb_categoria");
         categoriaDAO.guardarRegistro(categoria);
+    }
+    
+    protected void doGetEliminar(HttpServletRequest request, HttpServletResponse response, int id){
+        CategoriaDAO categoriaDAO = new CategoriaDAO("tb_categoria");
+        
+        String condicionEliminacion = " id_categoria = " + id;
+   
+        boolean estado = categoriaDAO.eliminarRegistros(condicionEliminacion);
+        System.out.println("Estado Eliminacion " + estado);
     }
     /**
      * Actaliza los datos del registro con el valor especificado

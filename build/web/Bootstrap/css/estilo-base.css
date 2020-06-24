@@ -1,27 +1,30 @@
-
-.encabezado{
+.encabezado {
     color: black;
     font-size: 20px;
-    height: 40px;
-    background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
-    padding: 4px;
+
+    background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%);
+
 }
 
-.contenido{
+.contenido {
     padding: 0px;
 }
 
+
+
+
 .pie{
-    background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
+    background: #C9CCD3;
+    background-image: linear-gradient(-180deg, rgba(255,255,255,0.50) 0%, rgba(0,0,0,0.50) 100%);
+    background-blend-mode: lighten;
     color: black;
     height: 36px;
     padding: 10px;
     text-align: center;
 }
 
-#bt{
-    background-image: linear-gradient(-225deg, #5D9FFF 0%, #B8DCFF 48%, #6BBBFF 100%);
-    color: black;
-    padding: 5px;
-    border-radius: 10px;
+.v{
+    background: #C9CCD3;
+    background-image: linear-gradient(-180deg, rgba(255,255,255,0.50) 0%, rgba(0,0,0,0.50) 100%);
+    background-blend-mode: lighten;
 }

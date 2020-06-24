@@ -22,10 +22,13 @@
                 <th>ACCIONES</th>
             </thead>
             <tbody>
-                
+        <!-- Permite usar la Lista guardada en session  -->
         <jsp:useBean id="Lista" scope="session" class="java.util.ArrayList"/>
         <% 
+            // Bucle que extrae todos los valores del array
             for(int i = 0; i < Lista.size(); i++ ){
+                // Guarda los valores en el objeto categoria para 
+                // estraer mas facilemtne con los getter
                 Categoria categoria = (Categoria) Lista.get(i);
 
         %>

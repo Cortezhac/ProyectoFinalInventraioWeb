@@ -82,10 +82,10 @@ public class CategoriaDAO {
         utilidades.insertarRegistro(this.nombreTabla, camposInsertar, valoresCampos);
     }
     
-    public void actualizarRegistro(Categoria categoriaActualizar, int condicion){
-        String Condicion = " id_categoria = " + String.valueOf(condicion);
+    public void actualizarRegistro(Categoria categoriaActualizar, String condicion){
+        
         String camposActualizar = "nom_categoria = '" + categoriaActualizar.getNom_categoria() + 
                                   "' , estado_categoria = '" + categoriaActualizar.getEstado_categoria() + "' ";
-        utilidades.actualizarRegistros(this.nombreTabla, camposActualizar, Condicion);
+        utilidades.actualizarRegistros(this.nombreTabla, camposActualizar, condicion);
     }
 }

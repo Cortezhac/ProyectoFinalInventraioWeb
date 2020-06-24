@@ -13,6 +13,7 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <!-- Obtiene los valores de la session          Tipo ArrayList se debe importar -->
         <jsp:useBean id="ListaResultado" scope="session" class="java.util.ArrayList" />
         <h1>Editar</h1>
 
@@ -26,11 +27,13 @@
                     </thead>
                     <tbody>
                     <%
+                        //Llamo al obeto categoria y almceno el valor del array
                         Categoria cat = (Categoria) ListaResultado.get(0);
                     %>
                     <tr>
                     <form action="Categorias" method="POST">
                         <input type="hidden" name="id" value="<%= cat.getId_categoria()%>" />
+                        <input type="hidden" name="accion" vale="UP"/>
                         <td><input type="text" name="nombre" value="<%=cat.getNom_categoria()%>" /></td>
                         <td><input type="text" name="estado" value="<%=cat.getEstado_categoria()%>" /></td>
                         <td><input type="submit" value="Actualizar"></td>

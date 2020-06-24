@@ -83,6 +83,6 @@ public class Pruebas {
         categorianueva.setEstado_categoria(estado);
         
         // Guarda los registros
-        utilidades.actualizarRegistro(categorianueva, busquedaid);
+        //utilidades.actualizarRegistro(categorianueva, busquedaid);
     }
 }

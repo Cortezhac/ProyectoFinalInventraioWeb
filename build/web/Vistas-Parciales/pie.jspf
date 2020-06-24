@@ -3,7 +3,27 @@
 <!--Aqui se deben cerrar los div abiertoss en encabezado.jspf-->
 </div>
 </div>
-    <div class="pie">
-        &COPY;AVENGERS JAVA;
-    </div>
+    <footer class="page-footer font-small teal pt-4 bg-success">
+        <div class="container-fluid text-center text-md-left">
+            <div class="row">
+                <div class="col-md-6 mt-md-0 mt-3">
+                    <h5 class="text-uppercase font-weight-bold">Proyecto Final Java</h5>
+                    <p>Este proyecto se ha desarrollado para facilitar el control del manejo de
+                        productos e invetario en una empresa</p>
+                </div>
+                <hr class="clearfix w-100 d-md-none pb-3">
+                <div class="col-md-6 mb-md-0 mb-3">
+                    <h5 class="text-uppercase font-weight-bold">Integrantes</h5>
+                    <p>Irvin Cortez</p>
+                    <p>Jose Acevedo</p>
+                    <p>Josue Hernandez</p>
+                    <p>Joel Reyes</p>
+                </div>
+            </div>
+        </div>
+        <div class="pie">
+            © 2020 Copyright:
+            &COPY;AVENGERS JAVA;
+        </div>
+    </footer>
 </div>

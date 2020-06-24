@@ -14,6 +14,7 @@
     </head>
     <body>
         <h1>Categorias</h1>
+        <a href="Categorias?accion=AD">Agregar</a>
         <table>
             <thead>
                 <th>ID</th>

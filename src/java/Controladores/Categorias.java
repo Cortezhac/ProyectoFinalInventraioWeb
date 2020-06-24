@@ -32,19 +32,7 @@ public class Categorias extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet Categorias</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet Categorias at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
+
     }
 
     @Override
@@ -59,6 +47,8 @@ public class Categorias extends HttpServlet {
             if(accion.equalsIgnoreCase("E")){ // E significa que va editar el registro
                 String id = request.getParameter("id"); // Obtiene el id del campo a editar
                 doGetEditar(request, response, id); // llmam a la funcion de editar 
+            }else if(accion.equalsIgnoreCase("AD")){
+                request.getRequestDispatcher("Vistas/Categoria/Agregar.jsp").forward(request, response);
             }
         }else {
             HttpSession Resultado = request.getSession(); // Creo una session
@@ -76,6 +66,7 @@ public class Categorias extends HttpServlet {
             throws ServletException, IOException {
         // Obtengo la accion via POST que esta dentro del formulario
         String accion = request.getParameter("accion");
+        System.out.println("Parametro Post" + accion);
         if(accion != null){// Si la accion esta vacia no hacer nada
             if(accion.equalsIgnoreCase("UP")){
                 // Objeto categoria para guardar los nuevos valores
@@ -91,8 +82,17 @@ public class Categorias extends HttpServlet {
                 categoria.setEstado_categoria(estado);
                 // Llamo a la funcion de actualizacion
                 doPostActualizar(request, response, categoria , condicion);
-            }else if(accion.equalsIgnoreCase("AD")){
-                
+                request.getRequestDispatcher("index.jsp").forward(request, response);
+            }else if(accion.equalsIgnoreCase("agregar")){
+                String nombre = request.getParameter("nombre");
+                int estado = Integer.parseInt(request.getParameter("estado"));
+
+                Categoria categoria = new Categoria();
+                categoria.setNom_categoria(nombre);
+                categoria.setEstado_categoria(estado);
+
+                doPostAgregar(request, response, categoria);
+                request.getRequestDispatcher("index.jsp").forward(request, response);
             }
         }
         //processRequest(request, response);
@@ -108,6 +108,11 @@ public class Categorias extends HttpServlet {
         // Redirecciona a editar
         request.getRequestDispatcher("Vistas/Categoria/Editar.jsp").forward(request, response);
     }
+    
+    protected void doPostAgregar(HttpServletRequest request, HttpServletResponse response, Categoria categoria){
+        CategoriaDAO categoriaDAO = new CategoriaDAO("tb_categoria");
+        categoriaDAO.guardarRegistro(categoria);
+    }
     /**
      * Actaliza los datos del registro con el valor especificado
      * @param request serverlet request
@@ -115,12 +120,13 @@ public class Categorias extends HttpServlet {
      * @param categoria Nuevos valores para actulizar
      * @param condicion  id del registro que se va a utilizar
      */
-    protected void doPostActualizar(HttpServletRequest request, HttpServletResponse response, Categoria categoria , int condicion){
+    protected void doPostActualizar(HttpServletRequest request, HttpServletResponse response, Categoria categoria , int condicion) throws ServletException, IOException{
         // Proporciona las funcionabilidades del CRUD
         CategoriaDAO categoriaDAO = new CategoriaDAO("tb_categoria");
         String Condicion = " id_categoria = " + condicion; // Condicion para el WHERE
         // Actualiza el registro con el datos especificados y la condicion
-        categoriaDAO.actualizarRegistro(categoria, Condicion);
+        boolean estado = categoriaDAO.actualizarRegistro(categoria, Condicion);
+        System.out.println("Estado update " + estado);
     } 
     /**
      * Returns a short description of the servlet.

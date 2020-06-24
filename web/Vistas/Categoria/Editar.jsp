@@ -33,7 +33,7 @@
                     <tr>
                     <form action="Categorias" method="POST">
                         <input type="hidden" name="id" value="<%= cat.getId_categoria()%>" />
-                        <input type="hidden" name="accion" vale="UP"/>
+                        <input type="hidden" name="accion" value="UP"/>
                         <td><input type="text" name="nombre" value="<%=cat.getNom_categoria()%>" /></td>
                         <td><input type="text" name="estado" value="<%=cat.getEstado_categoria()%>" /></td>
                         <td><input type="submit" value="Actualizar"></td>

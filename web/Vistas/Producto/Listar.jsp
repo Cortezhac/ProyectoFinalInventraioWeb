@@ -13,6 +13,7 @@
     </head>
     <body>
         <h1>Categorias</h1>
+        <a href="Productos?accion=AD">Agregar</a>
         <table border="1">
             <thead>
                 <th>ID</th>
@@ -46,8 +47,8 @@
             <td><%= prod.getCategoria() %></td>
             <td><%= prod.getFecha_entrada() %></td>
             <td>
-                <a href="#">Eliminar</a>
-                <a href="#">Editar</a>
+                <a href="Productos?accion=E&id=<%= prod.getId_producto() %>">Editar</a>
+                <a href="Productos?accion=DE&id=<%= prod.getId_producto() %>">Eliminar</a>
             </td>
         </tr>
         

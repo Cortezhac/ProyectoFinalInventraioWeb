@@ -3,7 +3,10 @@
 <!--Aqui se deben cerrar los div abiertoss en encabezado.jspf-->
 </div>
 </div>
-    <footer class="page-footer font-small teal pt-4 bg-success">
+
+
+<div class="v">
+    <footer class="page-footer font-small teal pt-4">
         <div class="container-fluid text-center text-md-left">
             <div class="row">
                 <div class="col-md-6 mt-md-0 mt-3">
@@ -26,4 +29,5 @@
             &COPY;AVENGERS JAVA;
         </div>
     </footer>
+</div>
 </div>

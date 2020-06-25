@@ -70,6 +70,7 @@ public class Productos extends HttpServlet {
                 String id = request.getParameter("id"); // Obtiene el id del campo a editar
                 doGetEditar(request, response, id); // llmam a la funcion de editar 
             }else if(accion.equalsIgnoreCase("AD")){
+                forane(request, response);
                 request.getRequestDispatcher("Vistas/Producto/Agregar.jsp").forward(request, response);
             }else if(accion.equalsIgnoreCase("DE")){
                 String id = request.getParameter("id"); // Obtiene el id del campo a editar
@@ -78,6 +79,7 @@ public class Productos extends HttpServlet {
         }else {
             HttpSession Resultado = request.getSession();
             Resultado.setAttribute("Lista", prod.listarRegistros());
+            forane(request, response);
             //request.getSession(true).setAttribute("Lista", categoria.listarRegistros());
             request.getRequestDispatcher("Vistas/Producto/Listar.jsp").forward(request, response);
             //processRequest(request, response);
@@ -214,6 +216,17 @@ public class Productos extends HttpServlet {
         // Actualiza el registro con el datos especificados y la condicion
         boolean estado = DAO.eliminarRegistro(Condicion);
         System.out.println("Estado delete " + estado);
+    }
+    
+    protected void forane (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+       // Proporciona las funcionabilidades del CRUD
+        ProductoDAO DAO = new ProductoDAO("tb_producto");
+        // Actualiza el registro con el datos especificados y la condicion
+       
+        HttpSession Resultado = request.getSession();
+        Resultado.setAttribute("Listar", DAO.listarLlave());
+        //request.getSession(true).setAttribute("Lista", categoria.listarRegistros());
+        //processRequest(request, response);
     }
     /**
     /**

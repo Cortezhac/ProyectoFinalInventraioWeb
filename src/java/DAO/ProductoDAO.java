@@ -6,6 +6,7 @@
 package DAO;
 
 import Factory.CRUDUntil;
+import Modelos.Categoria;
 import Modelos.Producto;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -113,5 +114,24 @@ public class ProductoDAO {
         String tabla = this.nomTabla;
         boolean estado = util.eliminarRegistro(tabla, condicion);
         return estado;
+    }
+    
+    public ArrayList<Categoria> listarLlave(){
+        ArrayList<Categoria> foranea = new ArrayList<>();
+        try{
+            rs = util.buscarRegistro("tb_categoria");
+            while(rs.next()){
+                Categoria categoria = new Categoria(rs.getInt("id_categoria"),
+                                                    rs.getString("nom_categoria"),
+                                                    rs.getByte("estado_categoria")
+                );
+                foranea.add(categoria);
+                
+            }
+        }catch(SQLException ex){
+            System.out.println("Error listarRegistro: " + ex);
+        }
+        
+        return foranea;
     }
 }

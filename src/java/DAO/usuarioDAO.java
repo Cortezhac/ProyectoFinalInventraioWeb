@@ -101,15 +101,23 @@ public class usuarioDAO{
     }
        
    
-   public void actualizarRegistro(usuario UsuarioActualizar, int condicion ){
+   public boolean actualizarRegistro(usuario UsuarioActualizar, String condicion ){
         String Condicion = " id = " + String.valueOf(condicion);
        //campos a actualizar
          String camposActualizar = "nombre  ='"+UsuarioActualizar.getNombre()+"',apellido ='"+UsuarioActualizar.getApellido()+"',correo = '"+
   UsuarioActualizar.getCorreo()+"', usuario = '" + UsuarioActualizar.getUsuario() +"', clave = '"+ UsuarioActualizar.getClave()+"', Tipo = '" + UsuarioActualizar.getTipo() + "',Estado = '" + UsuarioActualizar.getEstado()
           + "', Pregunta = '" + UsuarioActualizar.getPregunta()+ "',Respuesta = '" + UsuarioActualizar.getRespuesta()+ "'";
-       utilidades.actualizarRegistros(this.nombreTabla, camposActualizar, Condicion);
+        boolean estado = utilidades.actualizarRegistros(this.nombreTabla, camposActualizar, condicion);
+        return estado;
     }
 
+   
+  public boolean eliminarRegistro(String condicion){
+        String tabla = this.nombreTabla;
+        boolean estado;
+        estado = utilidades.eliminarRegistro(tabla, condicion);
+        return estado;
+    }
 
  }
 

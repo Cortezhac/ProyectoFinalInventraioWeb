@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package Controladores;
 
 import DAO.usuarioDAO;
@@ -13,7 +18,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Admin
+ * @author isaac
  */
 public class Usuario extends HttpServlet {
 
@@ -28,9 +33,31 @@ public class Usuario extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        response.setContentType("text/html;charset=UTF-8");
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet Usuario</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet Usuario at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
+        }
     }
-@Override
+
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    /**
+     * Handles the HTTP <code>GET</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         usuarioDAO usDA = new usuarioDAO("tb_usuario");
@@ -42,16 +69,16 @@ public class Usuario extends HttpServlet {
                 String id = request.getParameter("id"); // Obtiene el id del campo a editar
                 doGetEditar(request, response, id); // llmam a la funcion de editar 
             }else if(accion.equalsIgnoreCase("AD")){
-                request.getRequestDispatcher("Vistas/Usuario/Agregar.jsp").forward(request, response);
+                request.getRequestDispatcher("Vistas/Usuarios/Agregar.jsp").forward(request, response);
             }else if(accion.equalsIgnoreCase("DE")){
-                String id = request.getParameter("iduusario"); // Obtiene el id del campo a editar
+                String id = request.getParameter("id"); // Obtiene el id del campo a editar
                 doGetEliminar(request, response, id);
             }
         }else {
             HttpSession Resultado = request.getSession();
             Resultado.setAttribute("Lista", usDA.listarRegistros());
             //request.getSession(true).setAttribute("Lista", categoria.listarRegistros());
-            request.getRequestDispatcher("Vistas/Usuario/Listar.jsp").forward(request, response);
+            request.getRequestDispatcher("Vistas/Usuarios/Listar.jsp").forward(request, response);
             //processRequest(request, response);
         }
 
@@ -139,7 +166,7 @@ public class Usuario extends HttpServlet {
         // Guarda la lista en la session
         Lista.setAttribute("ListaResultado",Usuario.listarRegistros(busqueda));
         // Redirecciona a editar
-        request.getRequestDispatcher("Vistas/Usuario/Editar.jsp").forward(request, response);
+        request.getRequestDispatcher("Vistas/Usuarios/Editar.jsp").forward(request, response);
     }
      
     protected void doGetEliminar(HttpServletRequest request, HttpServletResponse response, String id) throws ServletException, IOException{
@@ -150,7 +177,7 @@ public class Usuario extends HttpServlet {
         // Guarda la lista en la session
         Lista.setAttribute("ListaResultado", Usuario.listarRegistros(busqueda));
         // Redirecciona a editar
-        request.getRequestDispatcher("Vistas/Usuario/Eliminar.jsp").forward(request, response);
+        request.getRequestDispatcher("Vistas/Usuarios/Eliminar.jsp").forward(request, response);
     }
     
      
@@ -195,4 +222,3 @@ public class Usuario extends HttpServlet {
     }// </editor-fold>
 
 }
-

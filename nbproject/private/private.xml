@@ -3,15 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/E:/Admin/Documents/NetBeansProjects/Youtube/ProyectoFinalInventraioWeb/web/WEB-INF/web.xml</file>
-            <file>file:/E:/Admin/Documents/NetBeansProjects/Youtube/ProyectoFinalInventraioWeb/web/Vistas/Categoria/Editar.jsp</file>
-            <file>file:/E:/Admin/Documents/NetBeansProjects/Youtube/ProyectoFinalInventraioWeb/web/Vistas/Categoria/Listar.jsp</file>
-            <file>file:/E:/Admin/Documents/NetBeansProjects/Youtube/ProyectoFinalInventraioWeb/src/java/Controladores/Categorias.java</file>
-            <file>file:/E:/Admin/Documents/NetBeansProjects/Youtube/ProyectoFinalInventraioWeb/src/java/Test/Pruebas.java</file>
-            <file>file:/E:/Admin/Documents/NetBeansProjects/Youtube/ProyectoFinalInventraioWeb/web/Vistas/Categoria/Agregar.jsp</file>
-            <file>file:/E:/Admin/Documents/NetBeansProjects/Youtube/ProyectoFinalInventraioWeb/src/java/Controladores/Index.java</file>
-            <file>file:/E:/Admin/Documents/NetBeansProjects/Youtube/ProyectoFinalInventraioWeb/src/java/DAO/CategoriaDAO.java</file>
-            <file>file:/E:/Admin/Documents/NetBeansProjects/Youtube/ProyectoFinalInventraioWeb/src/java/Factory/CRUDUntil.java</file>
+            <file>file:/C:/Users/JCH/Documents/NetBeansProjects/ProyectoFinalInventraioWeb/src/java/Controladores/Categorias.java</file>
         </group>
     </open-files>
 </project-private>

@@ -10,8 +10,18 @@
     padding: 0px;
 }
 
+.efecto{
+    
+}
 
+.efecto:hover{
+    color: #9ddcf7;
+    transform: scale(1.1);
+}
 
+.efecto:hover .no{
+    color: black;
+}
 
 .pie{
     background: #C9CCD3;

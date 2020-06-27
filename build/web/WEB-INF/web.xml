@@ -16,6 +16,10 @@
         <servlet-name>Usuario</servlet-name>
         <servlet-class>Controladores.Usuario</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>GenerarPDF</servlet-name>
+        <servlet-class>Controladores.GenerarPDF</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Categorias</servlet-name>
         <url-pattern>/Categorias</url-pattern>
@@ -31,6 +35,10 @@
     <servlet-mapping>
         <servlet-name>Usuario</servlet-name>
         <url-pattern>/Usuario</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GenerarPDF</servlet-name>
+        <url-pattern>/GenerarPDF</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -5,6 +5,7 @@
  */
 package Modelos;
 
+import Controladores.Usuario;
 import DAO.CategoriaDAO;
 import DAO.ProductoDAO;
 import com.itextpdf.text.BadElementException;
@@ -134,7 +135,7 @@ public class PDF {
         return tablaRegistro;
     }
     
-        protected static PdfPTable ProductoPdfTable(ArrayList<Producto> registroProducto){
+    protected static PdfPTable ProductoPdfTable(ArrayList<Producto> registroProducto){
         PdfPTable tablaRegistro = new PdfPTable(8);
         // Definir cabecera
         PdfPCell Cabecera = new PdfPCell();
@@ -180,6 +181,67 @@ public class PDF {
             tablaRegistro.addCell(Cuerpo);
             Cuerpo.setPhrase(new Paragraph(String.valueOf(producto.getFecha_entrada()),FuenteParrafos));
             tablaRegistro.addCell(Cuerpo);
+        }
+        tablaRegistro.setWidthPercentage(100); // ancho tabla completa
+        return tablaRegistro;
+    }
+    
+    protected static PdfPTable usuriosPdfPTable(ArrayList<usuario> registroUsuarios){
+        PdfPTable tablaRegistro = new PdfPTable(9);
+        // Definir cabecera
+        PdfPCell Cabecera = new PdfPCell();
+        Cabecera.setHorizontalAlignment(Element.ALIGN_CENTER);
+        Cabecera.setBackgroundColor(BaseColor.DARK_GRAY);
+        Cabecera.setPhrase(new Paragraph("Nombre", FuenteCabecera));
+        tablaRegistro.addCell(Cabecera);
+        Cabecera.setPhrase(new Paragraph("Apellido", FuenteCabecera));
+        tablaRegistro.addCell(Cabecera);
+        Cabecera.setPhrase(new Paragraph("Correo", FuenteCabecera));
+        tablaRegistro.addCell(Cabecera);
+        Cabecera.setPhrase(new Paragraph("Usuario", FuenteCabecera));
+        tablaRegistro.addCell(Cabecera);
+        Cabecera.setPhrase(new Paragraph("Clave", FuenteCabecera));
+        tablaRegistro.addCell(Cabecera);
+        Cabecera.setPhrase(new Paragraph("Tipo", FuenteCabecera));
+        tablaRegistro.addCell(Cabecera);
+        Cabecera.setPhrase(new Paragraph("Estado", FuenteCabecera));
+        tablaRegistro.addCell(Cabecera);
+        Cabecera.setPhrase(new Paragraph("Pregunta", FuenteCabecera));
+        tablaRegistro.addCell(Cabecera);
+        Cabecera.setPhrase(new Paragraph("Respuesta", FuenteCabecera));
+        tablaRegistro.addCell(Cabecera);
+//        Cabecera.setPhrase(new Paragraph("Fecha Registro", FuenteCabecera));
+//        tablaRegistro.addCell(Cabecera);
+        
+        // Asignar cabecera
+        tablaRegistro.setHeaderRows(1);
+        // Rellenar
+        for(int i = 0; i < registroUsuarios.size(); i++){
+            usuario Usuario = registroUsuarios.get(i);
+            PdfPCell Cuerpo = new PdfPCell();
+            Cuerpo.setHorizontalAlignment(Element.ALIGN_CENTER);
+            Cuerpo.setPhrase(new Paragraph(Usuario.getNombre(),FuenteParrafos));
+            tablaRegistro.addCell(Cuerpo);
+            Cuerpo.setPhrase(new Paragraph(Usuario.getApellido(),FuenteParrafos));
+            tablaRegistro.addCell(Cuerpo);
+            Cuerpo.setPhrase(new Paragraph(String.valueOf(Usuario.getCorreo()),FuenteParrafos));
+            tablaRegistro.addCell(Cuerpo);
+            Cuerpo.setPhrase(new Paragraph(String.valueOf(Usuario.getCorreo()),FuenteParrafos));
+            tablaRegistro.addCell(Cuerpo);
+            Cuerpo.setPhrase(new Paragraph(Usuario.getUsuario(),FuenteParrafos));
+            tablaRegistro.addCell(Cuerpo);
+            Cuerpo.setPhrase(new Paragraph(String.valueOf(Usuario.getClave()),FuenteParrafos));
+            tablaRegistro.addCell(Cuerpo);
+            Cuerpo.setPhrase(new Paragraph(String.valueOf(Usuario.getTipo()),FuenteParrafos));
+            tablaRegistro.addCell(Cuerpo);
+            Cuerpo.setPhrase(new Paragraph(String.valueOf(Usuario.getEstado()),FuenteParrafos));
+            tablaRegistro.addCell(Cuerpo);
+            Cuerpo.setPhrase(new Paragraph(String.valueOf(Usuario.getPregunta()),FuenteParrafos));
+            tablaRegistro.addCell(Cuerpo);
+            Cuerpo.setPhrase(new Paragraph(String.valueOf(Usuario.getRespuesta()),FuenteParrafos));
+            tablaRegistro.addCell(Cuerpo);
+//            Cuerpo.setPhrase(new Paragraph(String.valueOf(Usuario.get()),FuenteParrafos));
+//            tablaRegistro.addCell(Cuerpo);
         }
         tablaRegistro.setWidthPercentage(100); // ancho tabla completa
         return tablaRegistro;

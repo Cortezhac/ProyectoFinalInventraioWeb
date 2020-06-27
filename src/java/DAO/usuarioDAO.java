@@ -118,6 +118,6 @@ public class usuarioDAO{
         estado = utilidades.eliminarRegistro(tabla, condicion);
         return estado;
     }
-
+    
  }
 

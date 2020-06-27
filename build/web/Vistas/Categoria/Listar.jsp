@@ -15,6 +15,7 @@
     <body>
         <h1>Categorias</h1>
         <a href="Categorias?accion=AD">Agregar</a>
+        <a href="GenerarPDF?tabla=Categorias">Agregar</a>
         <table>
             <thead>
                 <th>ID</th>

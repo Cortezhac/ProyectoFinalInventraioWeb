@@ -40,7 +40,7 @@ public class usuarioDAO{
                                                     miResultSet.getString("correo"),
                                                     miResultSet.getString("usuario"),
                                                     miResultSet.getString("clave"),
-                                                    miResultSet.getString("tipo"),
+                                                    miResultSet.getInt("tipo"),
                                                     miResultSet.getString("estado"),
                                                     miResultSet.getString("pregunta"),
                                                     miResultSet.getString("respuesta"));
@@ -72,7 +72,7 @@ public class usuarioDAO{
                                                     miResultSet.getString("correo"),
                                                     miResultSet.getString("usuario"),
                                                     miResultSet.getString("clave"),
-                                                    miResultSet.getString("tipo"),
+                                                    miResultSet.getInt("tipo"),
                                                     miResultSet.getString("estado"),
                                                     miResultSet.getString("pregunta"),
                                                     miResultSet.getString("respuesta"));

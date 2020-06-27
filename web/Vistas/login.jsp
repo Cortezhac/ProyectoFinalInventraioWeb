@@ -11,7 +11,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
     </head>
-     <%@include file="/Vistas-Parciales/login.jspf" %>
+     <%@include file="../Vistas-Parciales/login.jspf" %>
     <body>
 
         <div class="container">

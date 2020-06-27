@@ -8,7 +8,7 @@ public class usuario {
     private String correo;
     private String usuario;
     private String clave;
-    private String tipo;
+    private int tipo;
     private String estado;
     private String pregunta;
     private String respuesta;
@@ -17,8 +17,15 @@ public class usuario {
     public usuario(){
         
     }
+
+    public usuario(String nombre, int tipo) {
+        this.nombre = nombre;
+        this.tipo = tipo;
+    }
     
-    public usuario(int idusuario, String nombre,String apellido,String correo,String usuario,String clave,String tipo, String estado,
+    
+    
+    public usuario(int idusuario, String nombre,String apellido,String correo,String usuario,String clave,int tipo, String estado,
             String pregunta,String respuesta) {
         
         this.idusuario = idusuario;
@@ -84,11 +91,11 @@ public class usuario {
         this.clave = clave;
     }
 
-    public String getTipo() {
+    public int getTipo() {
         return tipo;
     }
 
-    public void setTipo(String tipo) {
+    public void setTipo(int tipo) {
         this.tipo = tipo;
     }
 

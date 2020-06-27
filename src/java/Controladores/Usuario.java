@@ -104,7 +104,7 @@ public class Usuario extends HttpServlet {
                 String  correo = request.getParameter("correo");
                 String usuario = request.getParameter("usuario");
                 String clave = request.getParameter("clave");
-                String tipo = request.getParameter("tipo");
+                int tipo = Integer.parseInt(request.getParameter("tipo"));
                 String estado = request.getParameter("Estado");
                 String pregunta = request.getParameter("pregunta");
                 String respuesta = request.getParameter("respuesta");
@@ -133,7 +133,7 @@ public class Usuario extends HttpServlet {
                 String correo = request.getParameter("correo");
                 String usuario = request.getParameter("usuario");
                 String clave = request.getParameter("clave");
-                String tipo = request.getParameter("tipo");
+                int tipo = Integer.parseInt(request.getParameter("tipo"));
                String estado= request.getParameter("estado");
                String pregunta = request.getParameter("pregunta");
                String respuesta = request.getParameter("respuesta");
@@ -222,3 +222,4 @@ public class Usuario extends HttpServlet {
     }// </editor-fold>
 
 }
+

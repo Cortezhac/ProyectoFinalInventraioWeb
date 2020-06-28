@@ -19,9 +19,9 @@
         <!-- Obtiene los valores de la session          Tipo ArrayList se debe importar -->
         <jsp:useBean id="ListaResultado" scope="session" class="java.util.ArrayList" />
 
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-10">
                     <h1>Editar</h1>
                     <br/>
                     <table class="table table-responsive">

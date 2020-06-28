@@ -22,7 +22,7 @@
                             </div>
                         </div>
 
-                        <form action="" method="post" name="login" action="Usuario">
+                        <form method="post" name="login" action="Usuario">
                             <div class="form-group">
                                 <label for="usuario">Nombre Usuario</label>
                                 <input type="usuario" name="txtUsuario" class="form-control" id="usuario"

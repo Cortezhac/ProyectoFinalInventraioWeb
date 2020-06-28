@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Factory;
 
 import java.sql.Connection;
@@ -115,6 +110,19 @@ public class CRUDUntil {
             datosEncontrados = sqlStatement.executeQuery(QuerySQL);
         } catch (SQLException e) {
             System.out.println("Error en la busqueda por condicion " + e + "\n" + QuerySQL);
+        }
+        return datosEncontrados;
+    }
+    
+    public ResultSet buscarUsuario(String nombreTabla, String campos, String condicion){
+        String QuerySQL = "SELECT " + campos + " FROM " + nombreTabla + " WHERE " + condicion + ";";
+        ResultSet datosEncontrados = null;
+        try{
+            COM = SQLConexion.openConnection();
+            sqlStatement = COM.createStatement();
+            datosEncontrados = sqlStatement.executeQuery(QuerySQL);
+        }catch (SQLException e){
+            System.out.println("Error SQL " + e + "\n" + QuerySQL);
         }
         return datosEncontrados;
     }

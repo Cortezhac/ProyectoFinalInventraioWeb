@@ -25,7 +25,7 @@
             <div class="row">
                 <div class="container">
                     <table class="table table-responsive">
-                        <thead>
+                        <thead class="thead-dark">
                             <th>NOMBRE</th>
                             <th>DESCRIPCION</th>
                             <th>STOCK</th>

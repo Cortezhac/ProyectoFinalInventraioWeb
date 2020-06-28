@@ -25,16 +25,15 @@
                     <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
                 </svg> Agregar
             </a>
-            <a href="GenerarPDF?tabla=Productos"></a>
             <div class="d-flex justify-content-end">
-                <button href="" type="button" class="btn btn-info">
+                <a href="GenerarPDF?tabla=Productos" class="btn btn-info">
                     <svg class="bi bi-file-earmark" width="1em"
                             height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="M4 1h5v1H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V6h1v7a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2z" />
                         <path d="M9 4.5V1l5 5h-3.5A1.5 1.5 0 0 1 9 4.5z" />
                     </svg> IMPRIMIR
-                </button>
+                </a>
             </div>
             <table class="table table-hover">
                 <thead class="thead-dark">

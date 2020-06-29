@@ -20,6 +20,10 @@
         <servlet-name>GenerarPDF</servlet-name>
         <servlet-class>Controladores.GenerarPDF</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Login</servlet-name>
+        <servlet-class>Controladores.Login</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Categorias</servlet-name>
         <url-pattern>/Categorias</url-pattern>
@@ -39,6 +43,10 @@
     <servlet-mapping>
         <servlet-name>GenerarPDF</servlet-name>
         <url-pattern>/GenerarPDF</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Login</servlet-name>
+        <url-pattern>/Login</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

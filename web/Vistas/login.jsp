@@ -9,7 +9,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
     </head>
-     <%@include file="../Vistas-Parciales/login.jspf" %>
+    <%@include file="../Vistas-Parciales/login.jspf" %>
     <body>
         <div class="container">
         <div class="row">
@@ -22,7 +22,8 @@
                             </div>
                         </div>
 
-                        <form method="post" name="login" action="Usuario">
+                        <form  action="/ProyectoFinalInventraioWeb/Login" method="post" name="login">
+                            <input type="hidden" name="accion" value="logear">
                             <div class="form-group">
                                 <label for="usuario">Nombre Usuario</label>
                                 <input type="usuario" name="txtUsuario" class="form-control" id="usuario"
@@ -35,7 +36,7 @@
                             </div>
 
                             <div class="col-md-12 text-center "> 
-                                <button type="submit" name="btnIniciar" class=" btn btn-block mybtn btn-primary tx-tfm">Iniciar</button>
+                                <input type="submit" name="btnIniciar" class=" btn btn-block mybtn btn-primary tx-tfm" value="Iniciar">
                             </div>
                             <div class="col-md-12 ">
                                 <div class="login-or">
@@ -53,31 +54,10 @@
                         </form>
                         
                         <%
-                            HttpSession sesion = request.getSession();
-                            
-                             List<usuario> datos = new ArrayList<usuario>();
                             if(request.getAttribute("fail")!=null){
                                 out.print("<script>alert('Usuario o contra erroneos!');</script> ");
                             }
-                            if(request.getAttribute("datos")!=null){
-                                datos = (List<usuario>)request.getAttribute("datos");
-                                String nombre = "";
-                                int tipo = 0;
-                                for(usuario u : datos ){
-                                    nombre = u.getNombre();
-                                    tipo = u.getTipo();
-                                }
-                                sesion.setAttribute("usuario", nombre);
-                                sesion.setAttribute("tipo", tipo);
-                                response.sendRedirect("../index.jsp");
-                            }
-                            if(request.getParameter("cerrar")!=null){
-                                sesion.invalidate();
-                                response.sendRedirect("login.jsp");
-                            }
                         %>
-
-                     
                     </div>
                 </div>
             </div>

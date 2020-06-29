@@ -22,17 +22,21 @@
             <div class="container">
                 <div class="row justify-content-center mt-4">
                     <div class="col col-md-10 h5">
-                    <h1>Eliminar</h1>
+                        <h1 class="text-center">Eliminar</h1>
+                        <hr>
+                        <h4 class="text-center">Esta seguro de eliminar</h4>
                     <%
                         String estado = (categoria.getEstado_categoria() == 1)? "Activo" : "Inactivo" ;
                     %>
-                            <span class="text-uppercase">Nombre Categorias: </span> <%=categoria.getNom_categoria()%><br>
-                            <span class="text-uppercase">Estado Categorais: </span> <%=estado%><br>
+                    <div class="form-group">
+                        <label class="label">Nombre Categoria</label>
+                        <input class="form-control" type value="<%=categoria.getNom_categoria()%>" disabled="">
                     </div>
+                </div>
                 </div>
                 <div class="row justify-content-center">
                     <div class="col col-md-10">
-                        <a class="btn btn-info" href="Categorias?accion=Eliminar&id=<%=categoria.getId_categoria()%>">Eliminar</a>
+                        <a class="btn btn-info w-100" href="Categorias?accion=Eliminar&id=<%=categoria.getId_categoria()%>">Eliminar</a>
                     </div>
                 </div>
             </div>

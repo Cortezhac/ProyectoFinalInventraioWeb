@@ -8,6 +8,7 @@ package Modelos;
 import Controladores.Usuario;
 import DAO.CategoriaDAO;
 import DAO.ProductoDAO;
+import DAO.usuarioDAO;
 import com.itextpdf.text.BadElementException;
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Chapter;
@@ -37,6 +38,8 @@ public class PDF {
     private static final Font FuenteTitulos = FontFactory.getFont(FontFactory.TIMES_ROMAN, 26 , Font.BOLDITALIC);
     private static final Font FuenteParrafos = FontFactory.getFont(FontFactory.TIMES, 12, Font.NORMAL);
     private static final Font FuenteCabecera = FontFactory.getFont(FontFactory.TIMES, 12, Font.BOLD,BaseColor.WHITE);
+    private static final Font FuenteParrafosHormiga = FontFactory.getFont(FontFactory.TIMES, 9, Font.NORMAL);
+    private static final Font FuenteCabeceraHormiga = FontFactory.getFont(FontFactory.TIMES, 9, Font.BOLD,BaseColor.WHITE);
     private static final String Imagenutilizada = "";
     private static final Chunk saltoLinea = new Chunk(Chunk.NEWLINE);
     
@@ -98,6 +101,14 @@ public class PDF {
                 documento.add(saltoLinea);
                 ArrayList<Producto> Productos = utilDAO.listarRegistros();
                 documento.add(PDF.ProductoPdfTable(Productos));
+            }else if(nombreTabla.equalsIgnoreCase("Usuario")){
+                usuarioDAO utilidadesUsuario = new usuarioDAO("tb_usuario");
+                // Canecera datos
+                int totalRegistros = utilidadesUsuario.listarRegistros().size();
+                documento.add(PDF.CabeceraInfo(totalRegistros, nombreTabla));
+                documento.add(saltoLinea);
+                ArrayList<usuario> Usuario = utilidadesUsuario.listarRegistros();
+                documento.add(PDF.usuriosPdfPTable(Usuario));
             }
             documento.close();
             System.out.println("Se ha genrado tuu PDF");
@@ -141,21 +152,21 @@ public class PDF {
         PdfPCell Cabecera = new PdfPCell();
         Cabecera.setHorizontalAlignment(Element.ALIGN_CENTER);
         Cabecera.setBackgroundColor(BaseColor.DARK_GRAY);
-        Cabecera.setPhrase(new Paragraph("Nombre", FuenteCabecera));
+        Cabecera.setPhrase(new Paragraph("Nombre", FuenteCabeceraHormiga));
         tablaRegistro.addCell(Cabecera);
-        Cabecera.setPhrase(new Paragraph("Descripcion", FuenteCabecera));
+        Cabecera.setPhrase(new Paragraph("Descripcion", FuenteCabeceraHormiga));
         tablaRegistro.addCell(Cabecera);
-        Cabecera.setPhrase(new Paragraph("Stock", FuenteCabecera));
+        Cabecera.setPhrase(new Paragraph("Stock", FuenteCabeceraHormiga));
         tablaRegistro.addCell(Cabecera);
-        Cabecera.setPhrase(new Paragraph("Precio", FuenteCabecera));
+        Cabecera.setPhrase(new Paragraph("Precio", FuenteCabeceraHormiga));
         tablaRegistro.addCell(Cabecera);
-        Cabecera.setPhrase(new Paragraph("U. Medidad", FuenteCabecera));
+        Cabecera.setPhrase(new Paragraph("U. Medidad", FuenteCabeceraHormiga));
         tablaRegistro.addCell(Cabecera);
-        Cabecera.setPhrase(new Paragraph("Estado", FuenteCabecera));
+        Cabecera.setPhrase(new Paragraph("Estado", FuenteCabeceraHormiga));
         tablaRegistro.addCell(Cabecera);
-        Cabecera.setPhrase(new Paragraph("Categoria", FuenteCabecera));
+        Cabecera.setPhrase(new Paragraph("Categoria", FuenteCabeceraHormiga));
         tablaRegistro.addCell(Cabecera);
-        Cabecera.setPhrase(new Paragraph("Fecha Ingreso", FuenteCabecera));
+        Cabecera.setPhrase(new Paragraph("Fecha Ingreso", FuenteCabeceraHormiga));
         tablaRegistro.addCell(Cabecera);
         
         // Asignar cabecera
@@ -165,21 +176,21 @@ public class PDF {
             Producto producto = registroProducto.get(i);
             PdfPCell Cuerpo = new PdfPCell();
             Cuerpo.setHorizontalAlignment(Element.ALIGN_CENTER);
-            Cuerpo.setPhrase(new Paragraph(producto.getNom_producto(),FuenteParrafos));
+            Cuerpo.setPhrase(new Paragraph(producto.getNom_producto(),FuenteParrafosHormiga));
             tablaRegistro.addCell(Cuerpo);
-            Cuerpo.setPhrase(new Paragraph(producto.getDes_producto(),FuenteParrafos));
+            Cuerpo.setPhrase(new Paragraph(producto.getDes_producto(),FuenteParrafosHormiga));
             tablaRegistro.addCell(Cuerpo);
-            Cuerpo.setPhrase(new Paragraph(String.valueOf(producto.getStock()),FuenteParrafos));
+            Cuerpo.setPhrase(new Paragraph(String.valueOf(producto.getStock()),FuenteParrafosHormiga));
             tablaRegistro.addCell(Cuerpo);
-            Cuerpo.setPhrase(new Paragraph(String.valueOf(producto.getPrecio()),FuenteParrafos));
+            Cuerpo.setPhrase(new Paragraph(String.valueOf(producto.getPrecio()),FuenteParrafosHormiga));
             tablaRegistro.addCell(Cuerpo);
-            Cuerpo.setPhrase(new Paragraph(producto.getUnidad_de_medida(),FuenteParrafos));
+            Cuerpo.setPhrase(new Paragraph(producto.getUnidad_de_medida(),FuenteParrafosHormiga));
             tablaRegistro.addCell(Cuerpo);
-            Cuerpo.setPhrase(new Paragraph(String.valueOf(producto.getEstado_producto()),FuenteParrafos));
+            Cuerpo.setPhrase(new Paragraph(String.valueOf(producto.getEstado_producto()),FuenteParrafosHormiga));
             tablaRegistro.addCell(Cuerpo);
-            Cuerpo.setPhrase(new Paragraph(String.valueOf(producto.getCategoria()),FuenteParrafos));
+            Cuerpo.setPhrase(new Paragraph(String.valueOf(producto.getCategoria()),FuenteParrafosHormiga));
             tablaRegistro.addCell(Cuerpo);
-            Cuerpo.setPhrase(new Paragraph(String.valueOf(producto.getFecha_entrada()),FuenteParrafos));
+            Cuerpo.setPhrase(new Paragraph(String.valueOf(producto.getFecha_entrada()),FuenteParrafosHormiga));
             tablaRegistro.addCell(Cuerpo);
         }
         tablaRegistro.setWidthPercentage(100); // ancho tabla completa
@@ -187,31 +198,31 @@ public class PDF {
     }
     
     protected static PdfPTable usuriosPdfPTable(ArrayList<usuario> registroUsuarios){
-        PdfPTable tablaRegistro = new PdfPTable(9);
+        PdfPTable tablaRegistro = new PdfPTable(10);
         // Definir cabecera
         PdfPCell Cabecera = new PdfPCell();
         Cabecera.setHorizontalAlignment(Element.ALIGN_CENTER);
         Cabecera.setBackgroundColor(BaseColor.DARK_GRAY);
-        Cabecera.setPhrase(new Paragraph("Nombre", FuenteCabecera));
+        Cabecera.setPhrase(new Paragraph("Nombre", FuenteCabeceraHormiga));
         tablaRegistro.addCell(Cabecera);
-        Cabecera.setPhrase(new Paragraph("Apellido", FuenteCabecera));
+        Cabecera.setPhrase(new Paragraph("Apellido", FuenteCabeceraHormiga));
         tablaRegistro.addCell(Cabecera);
-        Cabecera.setPhrase(new Paragraph("Correo", FuenteCabecera));
+        Cabecera.setPhrase(new Paragraph("Correo", FuenteCabeceraHormiga));
         tablaRegistro.addCell(Cabecera);
-        Cabecera.setPhrase(new Paragraph("Usuario", FuenteCabecera));
+        Cabecera.setPhrase(new Paragraph("Usuario", FuenteCabeceraHormiga));
         tablaRegistro.addCell(Cabecera);
-        Cabecera.setPhrase(new Paragraph("Clave", FuenteCabecera));
+        Cabecera.setPhrase(new Paragraph("Clave", FuenteCabeceraHormiga));
         tablaRegistro.addCell(Cabecera);
-        Cabecera.setPhrase(new Paragraph("Tipo", FuenteCabecera));
+        Cabecera.setPhrase(new Paragraph("Tipo", FuenteCabeceraHormiga));
         tablaRegistro.addCell(Cabecera);
-        Cabecera.setPhrase(new Paragraph("Estado", FuenteCabecera));
+        Cabecera.setPhrase(new Paragraph("Estado", FuenteCabeceraHormiga));
         tablaRegistro.addCell(Cabecera);
-        Cabecera.setPhrase(new Paragraph("Pregunta", FuenteCabecera));
+        Cabecera.setPhrase(new Paragraph("Pregunta", FuenteCabeceraHormiga));
         tablaRegistro.addCell(Cabecera);
-        Cabecera.setPhrase(new Paragraph("Respuesta", FuenteCabecera));
+        Cabecera.setPhrase(new Paragraph("Respuesta", FuenteCabeceraHormiga));
         tablaRegistro.addCell(Cabecera);
-//        Cabecera.setPhrase(new Paragraph("Fecha Registro", FuenteCabecera));
-//        tablaRegistro.addCell(Cabecera);
+        Cabecera.setPhrase(new Paragraph("Fecha Registro", FuenteCabeceraHormiga));
+        tablaRegistro.addCell(Cabecera);
         
         // Asignar cabecera
         tablaRegistro.setHeaderRows(1);
@@ -220,28 +231,28 @@ public class PDF {
             usuario Usuario = registroUsuarios.get(i);
             PdfPCell Cuerpo = new PdfPCell();
             Cuerpo.setHorizontalAlignment(Element.ALIGN_CENTER);
-            Cuerpo.setPhrase(new Paragraph(Usuario.getNombre(),FuenteParrafos));
+            Cuerpo.setPhrase(new Paragraph(Usuario.getNombre(),FuenteParrafosHormiga));
             tablaRegistro.addCell(Cuerpo);
-            Cuerpo.setPhrase(new Paragraph(Usuario.getApellido(),FuenteParrafos));
+            Cuerpo.setPhrase(new Paragraph(Usuario.getApellido(),FuenteParrafosHormiga));
             tablaRegistro.addCell(Cuerpo);
-            Cuerpo.setPhrase(new Paragraph(String.valueOf(Usuario.getCorreo()),FuenteParrafos));
+            Cuerpo.setPhrase(new Paragraph(String.valueOf(Usuario.getCorreo()),FuenteParrafosHormiga));
             tablaRegistro.addCell(Cuerpo);
-            Cuerpo.setPhrase(new Paragraph(String.valueOf(Usuario.getCorreo()),FuenteParrafos));
+            Cuerpo.setPhrase(new Paragraph(Usuario.getUsuario(),FuenteParrafosHormiga));
             tablaRegistro.addCell(Cuerpo);
-            Cuerpo.setPhrase(new Paragraph(Usuario.getUsuario(),FuenteParrafos));
+            Cuerpo.setPhrase(new Paragraph(String.valueOf(Usuario.getClave().hashCode()),FuenteParrafosHormiga));
             tablaRegistro.addCell(Cuerpo);
-            Cuerpo.setPhrase(new Paragraph(String.valueOf(Usuario.getClave()),FuenteParrafos));
+            String tipo = (Usuario.getTipo() == 1 )? "Administrador" : "Cliente";
+            Cuerpo.setPhrase(new Paragraph(tipo,FuenteParrafosHormiga));
             tablaRegistro.addCell(Cuerpo);
-            Cuerpo.setPhrase(new Paragraph(String.valueOf(Usuario.getTipo()),FuenteParrafos));
+            String estado =(String.valueOf(Usuario.getEstado()).equalsIgnoreCase("1"))? "Activo" : "Inactivo";
+            Cuerpo.setPhrase(new Paragraph(estado,FuenteParrafosHormiga));
             tablaRegistro.addCell(Cuerpo);
-            Cuerpo.setPhrase(new Paragraph(String.valueOf(Usuario.getEstado()),FuenteParrafos));
+            Cuerpo.setPhrase(new Paragraph(String.valueOf(Usuario.getPregunta()),FuenteParrafosHormiga));
             tablaRegistro.addCell(Cuerpo);
-            Cuerpo.setPhrase(new Paragraph(String.valueOf(Usuario.getPregunta()),FuenteParrafos));
+            Cuerpo.setPhrase(new Paragraph(String.valueOf(Usuario.getRespuesta().hashCode()),FuenteParrafosHormiga));
             tablaRegistro.addCell(Cuerpo);
-            Cuerpo.setPhrase(new Paragraph(String.valueOf(Usuario.getRespuesta()),FuenteParrafos));
+            Cuerpo.setPhrase(new Paragraph(Usuario.getFechaRegistro(),FuenteParrafosHormiga));
             tablaRegistro.addCell(Cuerpo);
-//            Cuerpo.setPhrase(new Paragraph(String.valueOf(Usuario.get()),FuenteParrafos));
-//            tablaRegistro.addCell(Cuerpo);
         }
         tablaRegistro.setWidthPercentage(100); // ancho tabla completa
         return tablaRegistro;

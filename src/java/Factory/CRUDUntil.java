@@ -25,7 +25,7 @@ public class CRUDUntil {
      * @return boolean false | true 
      */
     public boolean insertarRegistro(String nombreTabla, String camposInsertar, String valoresCampos){
-        String QuerySQL = "INSERT INTO " + nombreTabla + "( " + camposInsertar + ") VALUES(" + valoresCampos + ");";
+        String QuerySQL = "INSERT INTO " + nombreTabla + " ( " + camposInsertar + ") VALUES(" + valoresCampos + ");";
         int resultado = 0;
         try {
             COM = SQLConexion.openConnection();

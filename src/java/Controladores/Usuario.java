@@ -83,9 +83,13 @@ public class Usuario extends HttpServlet {
                 doGetEditar(request, response, id); // llmam a la funcion de editar 
             } else if (accion.equalsIgnoreCase("AD")) {
                 request.getRequestDispatcher("Vistas/Usuarios/Agregar.jsp").forward(request, response);
-            } else if (accion.equalsIgnoreCase("DE")) {
+            } else if (accion.equalsIgnoreCase("DEL")) {
                 String id = request.getParameter("id"); // Obtiene el id del campo a editar
                 doGetEliminar(request, response, id);
+            }else if(accion.equalsIgnoreCase("Eliminar")){
+                int Eliminarid = Integer.parseInt(request.getParameter("id"));
+                doPostEliminar(request, response, Eliminarid);
+                request.getRequestDispatcher("index.jsp").forward(request, response);
             }
         } else {
             HttpSession Resultado = request.getSession();
@@ -117,7 +121,7 @@ public class Usuario extends HttpServlet {
                 String usuario = request.getParameter("usuario");
                 String clave = request.getParameter("clave");
                 int tipo = Integer.parseInt(request.getParameter("tipo"));
-                String estado = request.getParameter("Estado");
+                String estado = request.getParameter("estado");
                 String pregunta = request.getParameter("pregunta");
                 String respuesta = request.getParameter("respuesta");
 
@@ -138,7 +142,7 @@ public class Usuario extends HttpServlet {
                 //-----------------------------------------------------------------------------//
             } else if (accion.equalsIgnoreCase("agregar")) {
 
-                int condicion = Integer.parseInt(request.getParameter("id"));
+//                int condicion = Integer.parseInt(request.getParameter("id"));
                 String nombre = request.getParameter("nombre");
                 String apellido = request.getParameter("apellido");
                 String correo = request.getParameter("correo");
@@ -169,11 +173,11 @@ public class Usuario extends HttpServlet {
 
     protected void doGetEditar(HttpServletRequest request, HttpServletResponse response, String id) throws ServletException, IOException {
         usuarioDAO Usuario = new usuarioDAO("tb_usuario");
-        String busqueda = "id = " + id; // Condicion para el WHERE
-        System.out.println("Condicion de buscqueda " + id); // para el log
+        String busqueda = " id = " + id; // Condicion para el WHERE
+        System.out.println("Condicion de buscqueda " + id ); // para el log
         HttpSession Lista = request.getSession();// Crea la session
         // Guarda la lista en la session
-        Lista.setAttribute("ListaResultado", Usuario.listarRegistros(busqueda));
+        Lista.setAttribute("ListaEditarUsuario", Usuario.listarRegistros(busqueda));
         // Redirecciona a editar
         request.getRequestDispatcher("Vistas/Usuarios/Editar.jsp").forward(request, response);
     }

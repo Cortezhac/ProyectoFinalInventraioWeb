@@ -12,7 +12,7 @@ public class usuario {
     private String estado;
     private String pregunta;
     private String respuesta;
-    
+    private String fechaRegistro;
     
     public usuario(){
         
@@ -26,7 +26,7 @@ public class usuario {
     
     
     public usuario(int idusuario, String nombre,String apellido,String correo,String usuario,String clave,int tipo, String estado,
-            String pregunta,String respuesta) {
+            String pregunta,String respuesta, String fechaRegistro) {
         
         this.idusuario = idusuario;
         this.nombre = nombre;
@@ -36,6 +36,9 @@ public class usuario {
         this.clave = clave;
         this.tipo = tipo;
         this.estado = estado;
+        this.pregunta = pregunta;
+        this.respuesta = respuesta;
+        this.fechaRegistro = fechaRegistro;
     }
 
    
@@ -123,4 +126,11 @@ public class usuario {
         this.respuesta = respuesta;
     }
 
+    public String getFechaRegistro() {
+        return fechaRegistro;
+    }
+
+    public void setFechaRegistro(String fechaRegistro) {
+        this.fechaRegistro = fechaRegistro;
+    }
   }

@@ -34,16 +34,17 @@ public class usuarioDAO{
             miResultSet = utilidades.buscarRegistro(this.nombreTabla);
             // Extrae los registros del ResulSet y los guarda en en ArrayList
             while (miResultSet.next()) {                
-                           usuario us = new usuario(miResultSet.getInt("idusuario"),
-                                                    miResultSet.getString("nombre"),
-                                                    miResultSet.getString("apellido"),
-                                                    miResultSet.getString("correo"),
-                                                    miResultSet.getString("usuario"),
-                                                    miResultSet.getString("clave"),
-                                                    miResultSet.getInt("tipo"),
-                                                    miResultSet.getString("estado"),
-                                                    miResultSet.getString("pregunta"),
-                                                    miResultSet.getString("respuesta"));
+                usuario us = new usuario(miResultSet.getInt("id"),
+                                        miResultSet.getString("nombre"),
+                                        miResultSet.getString("apellido"),
+                                        miResultSet.getString("correo"),
+                                        miResultSet.getString("usuario"),
+                                        miResultSet.getString("clave"),
+                                        miResultSet.getInt("tipo"),
+                                        miResultSet.getString("estado"),
+                                        miResultSet.getString("pregunta"),
+                                        miResultSet.getString("respuesta"),
+                                        miResultSet.getString("fecha_registro"));
                                                    
                  usuario.add(us);
             }
@@ -63,10 +64,10 @@ public class usuarioDAO{
         ArrayList<usuario> usuario = new ArrayList<>();
         try {
             // Traigo los registros con el nombre de la tabla
-            miResultSet = utilidades.buscarRegistro(this.nombreTabla);
+            miResultSet = utilidades.buscarRegistro(this.nombreTabla, condicion);
             // Extrae los registros del ResulSet y los guarda en en ArrayList
             while (miResultSet.next()) {                
-                           usuario us = new usuario(miResultSet.getInt("idusuario"),
+                           usuario us = new usuario(miResultSet.getInt("id"),
                                                     miResultSet.getString("nombre"),
                                                     miResultSet.getString("apellido"),
                                                     miResultSet.getString("correo"),
@@ -75,7 +76,8 @@ public class usuarioDAO{
                                                     miResultSet.getInt("tipo"),
                                                     miResultSet.getString("estado"),
                                                     miResultSet.getString("pregunta"),
-                                                    miResultSet.getString("respuesta"));
+                                                    miResultSet.getString("respuesta"),
+                                                    miResultSet.getString("fecha_registro"));
                                                    
                  usuario.add(us);
             }
@@ -92,9 +94,9 @@ public class usuarioDAO{
      * @param UsuarioGuardar con todos los parametros de categoria 
      */
    public void guardarRegistros( usuario UsuarioGuardar ){
-        //Campos a actualizar
-        String camposInsertar = "nombre,apellido,correo,usuario,clave,tipo,estado,pregunta,respuesta";
-        // Nuevos valores en el mismo orden que los campos
+    //Campos a actualizar
+    String camposInsertar = "nombre,apellido,correo,usuario,clave,tipo,estado,pregunta,respuesta";
+    // Nuevos valores en el mismo orden que los campos
       String ValoresCampos = "'" + UsuarioGuardar.getNombre() + "','" + UsuarioGuardar.getApellido() + "','" + UsuarioGuardar.getCorreo() + "','" + UsuarioGuardar.getUsuario() + "','" +
                 UsuarioGuardar.getClave() + "','" + UsuarioGuardar.getTipo() + "','" + UsuarioGuardar.getEstado() + "','" + UsuarioGuardar.getPregunta() + "','" + UsuarioGuardar.getRespuesta() + "'";
         utilidades.insertarRegistro(this.nombreTabla, camposInsertar, ValoresCampos);
@@ -104,9 +106,9 @@ public class usuarioDAO{
    public boolean actualizarRegistro(usuario UsuarioActualizar, String condicion ){
         String Condicion = " id = " + String.valueOf(condicion);
        //campos a actualizar
-         String camposActualizar = "nombre  ='"+UsuarioActualizar.getNombre()+"',apellido ='"+UsuarioActualizar.getApellido()+"',correo = '"+
-  UsuarioActualizar.getCorreo()+"', usuario = '" + UsuarioActualizar.getUsuario() +"', clave = '"+ UsuarioActualizar.getClave()+"', Tipo = '" + UsuarioActualizar.getTipo() + "',Estado = '" + UsuarioActualizar.getEstado()
-          + "', Pregunta = '" + UsuarioActualizar.getPregunta()+ "',Respuesta = '" + UsuarioActualizar.getRespuesta()+ "'";
+         String camposActualizar = "nombre  = '"+UsuarioActualizar.getNombre()+"',apellido = '"+UsuarioActualizar.getApellido()+"',correo = '"+
+  UsuarioActualizar.getCorreo()+"', usuario = '" + UsuarioActualizar.getUsuario() +"', clave = '"+ UsuarioActualizar.getClave()+"', tipo = '" + UsuarioActualizar.getTipo() + "',estado = '" + UsuarioActualizar.getEstado()
+          + "', pregunta = '" + UsuarioActualizar.getPregunta()+ "', respuesta = '" + UsuarioActualizar.getRespuesta()+ "'";
         boolean estado = utilidades.actualizarRegistros(this.nombreTabla, camposActualizar, condicion);
         return estado;
     }

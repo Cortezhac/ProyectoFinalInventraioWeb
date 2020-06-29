@@ -3,18 +3,21 @@
 <%@page import="Modelos.usuario"%>
 <%@page session="true"%>
 <%
+    String usuario = "";
     HttpSession comprobraSesscion = request.getSession();
     if(comprobraSesscion.getAttribute("datosUsuario") != null){
        usuario user = (usuario) comprobraSesscion.getAttribute("datosUsuario");
         if((user.getUsuario() ==  null)){
         response.sendRedirect("Login");
         }
+        int tipo = 0;
+        usuario = user.getNombre();
+        tipo = user.getTipo();
     }else{
         response.sendRedirect("Login");    
     }
-    String usuario = "";
-    int tipo = 0;
-    // Usuario diferente de null y usuario diferente de vacio
+
+    
 %>
 <%@ page pageEncoding="UTF-8" %>
 <div>
@@ -48,7 +51,7 @@
                 </li>
             </ul>
             <span class="navbar-text mx-2">
-               Bienvenido <%="usuario" %>
+               Bienvenido <%=usuario %>
             </span>
             <a class="btn btn-sm btn-outline-danger my-2 my-sm-0" href="Login?opcion=cerrar"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-box-arrow-in-right" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" d="M8.146 11.354a.5.5 0 0 1 0-.708L10.793 8 8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0z"/>

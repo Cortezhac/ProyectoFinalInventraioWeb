@@ -34,7 +34,7 @@
                             </div>
                             <div class="form-group col-sm-11 col-md-6">
                                 <label class="label-info" for="usuario">Nombre de Usuario</label>
-                                <input class="form-control" type="text" name="clave" value="">
+                                <input class="form-control" type="text" name="usuario" value="">
                             </div>
                             <div class="form-group col-sm-11 col-md-6">
                                 <label class="label-info" for="clave">Contraseña</label>

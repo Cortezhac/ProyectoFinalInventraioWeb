@@ -7,6 +7,7 @@ package Controladores;
 
 import DAO.CategoriaDAO;
 import Modelos.Categoria;
+import Modelos.usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;

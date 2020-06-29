@@ -37,28 +37,6 @@ public class Usuario extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-
-            String usuario = "";
-            String clave = "";
-            loginDAO dao = new loginDAO();
-            List<usuario> datos = new ArrayList<usuario>();
-
-            if (request.getParameter("btnIniciar") != null) {
-                usuario = request.getParameter("txtUsuario");
-                clave = request.getParameter("txtContra");
-                datos = dao.accesar(usuario, clave);
-                if (datos.size() > 0) {
-                    request.setAttribute("datos", datos);
-                    request.getRequestDispatcher("Vistas/login.jsp").forward(request, response);
-                }else{
-                    request.setAttribute("fail", "NO HAY ACCESO!");
-                    request.getRequestDispatcher("Vistas/login.jsp").forward(request, response);
-                    
-                }
-            }
-        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -78,6 +56,7 @@ public class Usuario extends HttpServlet {
         String accion = request.getParameter("accion");// Capturar parametro accion
         System.out.println("Accion " + accion);// para el log
         if (accion != null) {
+            
             if (accion.equalsIgnoreCase("E")) { // E significa que va editar el registro
                 String id = request.getParameter("id"); // Obtiene el id del campo a editar
                 doGetEditar(request, response, id); // llmam a la funcion de editar 
@@ -94,11 +73,8 @@ public class Usuario extends HttpServlet {
         } else {
             HttpSession Resultado = request.getSession();
             Resultado.setAttribute("Lista", usDA.listarRegistros());
-            //request.getSession(true).setAttribute("Lista", categoria.listarRegistros());
             request.getRequestDispatcher("Vistas/Usuarios/Listar.jsp").forward(request, response);
-            //processRequest(request, response);
         }
-
     }
 
     @Override

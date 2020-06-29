@@ -59,7 +59,7 @@ public class Index extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        RequestDispatcher dis = getServletContext().getRequestDispatcher("/index.jsp");
+        RequestDispatcher dis = getServletContext().getRequestDispatcher("index.jsp");
         dis.forward(request, response);
     }
 
@@ -74,6 +74,8 @@ public class Index extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        RequestDispatcher dis = getServletContext().getRequestDispatcher("index.jsp");
+        dis.forward(request, response);
         processRequest(request, response);
     }
 

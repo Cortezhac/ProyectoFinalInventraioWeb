@@ -3,6 +3,8 @@
     Created on : 23-jun-2020, 10:16:46
     Author     : JCH
 --%>
+<%@page import="Modelos.Categoria"%>
+<%@page import="DAO.CategoriaDAO"%>
 <%@page import="Modelos.Producto"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -91,7 +93,12 @@
                         
                     %>
                 </td>
-                <td><%= prod.getCategoria() %></td>
+                <% 
+                    CategoriaDAO util = new CategoriaDAO("tb_categoria");
+                    String condicion = " id_categoria = " + prod.getCategoria() + " ";
+                    Categoria cate = (Categoria) util.listarRegistros(condicion).get(0);
+                %>
+                <td><%= cate.getNom_categoria()%></td>
                 <td><%= prod.getFecha_entrada() %></td>
                 <td>
                     <a href="Productos?accion=E&id=<%= prod.getId_producto() %>" class="btn btn-warning">

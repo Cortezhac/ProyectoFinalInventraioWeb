@@ -68,16 +68,16 @@
                             </td>
                             <td><input type="text" class="form-control" name="estado" value="<%= pro.getEstado_producto()%>" /></td>
                             <td><input type="text" class="form-control" name="fecha" value="<%= pro.getFecha_entrada() %>" /></td>
-                            <br>
-                            <div class="form-group">
-                                <input type="submit" value="Actualizar" class="btn btn-primary btn-lg btn-block"/>
-                            </div>
-                        </form>
                         </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+                        <br>
+                     </tbody>
+            </table>
+                        <div class="">
+                            <input type="submit" value="Actualizar" class="btn btn-primary btn-lg btn-block"/>
+                        </div>
+                    </form>
+        </div>
+    </div>
         </div>
         <br><br><br>
         <a href="Productos" class="btn btn-danger">Regresar</a>

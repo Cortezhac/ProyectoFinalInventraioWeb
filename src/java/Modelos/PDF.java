@@ -186,9 +186,13 @@ public class PDF {
             tablaRegistro.addCell(Cuerpo);
             Cuerpo.setPhrase(new Paragraph(producto.getUnidad_de_medida(),FuenteParrafosHormiga));
             tablaRegistro.addCell(Cuerpo);
-            Cuerpo.setPhrase(new Paragraph(String.valueOf(producto.getEstado_producto()),FuenteParrafosHormiga));
+            String salida = (producto.getEstado_producto() == 1)? "Disponible" : "No disponible";
+            Cuerpo.setPhrase(new Paragraph(salida,FuenteParrafosHormiga));
             tablaRegistro.addCell(Cuerpo);
-            Cuerpo.setPhrase(new Paragraph(String.valueOf(producto.getCategoria()),FuenteParrafosHormiga));
+            CategoriaDAO util = new CategoriaDAO("tb_categoria");
+            String condicion = " id_categoria = " + producto.getCategoria() + " ";
+            Categoria cate = (Categoria) util.listarRegistros(condicion).get(0);
+            Cuerpo.setPhrase(new Paragraph(cate.getNom_categoria(),FuenteParrafosHormiga));
             tablaRegistro.addCell(Cuerpo);
             Cuerpo.setPhrase(new Paragraph(String.valueOf(producto.getFecha_entrada()),FuenteParrafosHormiga));
             tablaRegistro.addCell(Cuerpo);

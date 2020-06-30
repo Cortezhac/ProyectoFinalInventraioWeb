@@ -84,7 +84,7 @@
                 </td>
                 <td><%= usuarios.getPregunta() %></td>
                 <td><%= usuarios.getRespuesta()%></td>
-                <td><%= usuarios.getFechaRegistro()%></td>>
+                <td><%= usuarios.getFechaRegistro()%></td>
                 <td>
                     <a class="btn btn-warning" href="Usuario?accion=E&id=<%=usuarios.getIdusuario()%>">
                         <svg class="bi bi-pencil-square" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">

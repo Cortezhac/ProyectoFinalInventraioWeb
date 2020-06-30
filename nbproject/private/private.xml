@@ -3,8 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/E:/Admin/Documents/NetBeansProjects/Youtube/ProyectoFinalInventraioWeb/src/java/Modelos/CRUDUntil.java</file>
-            <file>file:/E:/Admin/Documents/NetBeansProjects/Youtube/ProyectoFinalInventraioWeb/src/java/Modelos/Conexion.java</file>
+            <file>file:/E:/Admin/Documents/NetBeansProjects/Youtube/ProyectoFinalInventraioWeb/web/Vistas/Usuarios/Listar.jsp</file>
+            <file>file:/E:/Admin/Documents/NetBeansProjects/Youtube/ProyectoFinalInventraioWeb/src/java/Controladores/Login.java</file>
+            <file>file:/E:/Admin/Documents/NetBeansProjects/Youtube/ProyectoFinalInventraioWeb/web/Vistas/login.jsp</file>
+            <file>file:/E:/Admin/Documents/NetBeansProjects/Youtube/ProyectoFinalInventraioWeb/web/Vistas/Recuperar.jsp</file>
+            <file>file:/E:/Admin/Documents/NetBeansProjects/Youtube/ProyectoFinalInventraioWeb/src/java/DAO/loginDAO.java</file>
+            <file>file:/E:/Admin/Documents/NetBeansProjects/Youtube/ProyectoFinalInventraioWeb/src/java/Factory/CRUDUntil.java</file>
         </group>
     </open-files>
 </project-private>

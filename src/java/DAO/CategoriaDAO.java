@@ -45,6 +45,31 @@ public class CategoriaDAO {
         return categorias;
     }
     /**
+     * Busca todos los registros con la condicion especificada
+     * @param condicion Formato <code>nombre_campo = valor_campo</code> si el valor a utilizar en
+     * el campo es VARCHAR colocarlo en tre comillas simple <code>'valor_campo'</code>
+     * @return ArrayList de tipo Categoria
+     */
+    public ArrayList<Categoria> listarRegistros(String condicion){
+        // Preparo las lista
+        ArrayList<Categoria> categorias = new ArrayList<>();
+        try {
+            // Traigo los registros con el nombre de la tabla
+            miResultSet = utilidades.buscarRegistro(this.nombreTabla, condicion);
+            // Extrae los registros del ResulSet y los guarda en en ArrayList
+            while (miResultSet.next()) {                
+                Categoria categoria = new Categoria(miResultSet.getInt("id_categoria"),
+                                                    miResultSet.getString("nom_categoria"),
+                                                    miResultSet.getByte("estado_categoria"));
+                categorias.add(categoria);
+            }
+        } catch (SQLException e) {
+            System.out.println("Error listarRegistros " + e);
+        }
+        return categorias;
+    }
+    
+    /**
      * Toma los datos del objeto y los almacena
      * @param categoriaGuardar objeto con todos los parametros de categoria 
      */
@@ -57,10 +82,18 @@ public class CategoriaDAO {
         utilidades.insertarRegistro(this.nombreTabla, camposInsertar, valoresCampos);
     }
     
-    public void actualizarRegistro(Categoria categoriaActualizar, int condicion){
-        String Condicion = " id_categoria = " + String.valueOf(condicion);
-        String camposActualizar = "nom_categoria = '" + categoriaActualizar.getNom_categoria() + 
+    public boolean actualizarRegistro(Categoria categoriaActualizar, String condicion){
+        
+        String camposActualizar = " nom_categoria = '" + categoriaActualizar.getNom_categoria() + 
                                   "' , estado_categoria = '" + categoriaActualizar.getEstado_categoria() + "' ";
-        utilidades.actualizarRegistros(this.nombreTabla, camposActualizar, Condicion);
+        boolean estado = utilidades.actualizarRegistros(this.nombreTabla, camposActualizar, condicion);
+        return estado;
     }
+    
+    public boolean eliminarRegistros(String condicionEliminacion){
+        boolean estado;
+        estado = utilidades.eliminarRegistro(this.nombreTabla, condicionEliminacion);
+        return  estado;
+    }
+        
 }

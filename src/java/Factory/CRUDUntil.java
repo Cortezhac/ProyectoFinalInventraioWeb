@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Factory;
 
 import java.sql.Connection;
@@ -30,7 +25,7 @@ public class CRUDUntil {
      * @return boolean false | true 
      */
     public boolean insertarRegistro(String nombreTabla, String camposInsertar, String valoresCampos){
-        String QuerySQL = "INSERT INTO " + nombreTabla + "( " + camposInsertar + ") VALUES(" + valoresCampos + ");";
+        String QuerySQL = "INSERT INTO " + nombreTabla + " ( " + camposInsertar + ") VALUES(" + valoresCampos + ");";
         int resultado = 0;
         try {
             COM = SQLConexion.openConnection();
@@ -106,7 +101,7 @@ public class CRUDUntil {
      * @param condicion Condicion de busqueda Formato: nombre_campo = valor_campo
      * @return datosEncontrados 
      */
-    public ResultSet buscarRegistro(String nombreTabla, int condicion){
+    public ResultSet buscarRegistro(String nombreTabla, String condicion){
         String QuerySQL = "SELECT * FROM " + nombreTabla + " WHERE " + condicion + " ;";
         ResultSet datosEncontrados = null;
         try {
@@ -115,6 +110,19 @@ public class CRUDUntil {
             datosEncontrados = sqlStatement.executeQuery(QuerySQL);
         } catch (SQLException e) {
             System.out.println("Error en la busqueda por condicion " + e + "\n" + QuerySQL);
+        }
+        return datosEncontrados;
+    }
+    
+    public ResultSet buscarUsuario(String nombreTabla, String campos, String condicion){
+        String QuerySQL = "SELECT " + campos + " FROM " + nombreTabla + " WHERE " + condicion + ";";
+        ResultSet datosEncontrados = null;
+        try{
+            COM = SQLConexion.openConnection();
+            sqlStatement = COM.createStatement();
+            datosEncontrados = sqlStatement.executeQuery(QuerySQL);
+        }catch (SQLException e){
+            System.out.println("Error SQL " + e + "\n" + QuerySQL);
         }
         return datosEncontrados;
     }

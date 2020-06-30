@@ -46,7 +46,7 @@
                             </div>
                             <div class="col-md-12 mb-3">
                                 <p class="text-center">
-                                    <a href="" class="google btn mybtn"><i class="fa fa-google-plus">
+                                    <a href="Vistas/Recuperar.jsp" class="google btn mybtn"><i class="fa fa-google-plus">
                                         </i> Olvidaste tu contraseña_?
                                     </a>
                                 </p>

@@ -106,6 +106,32 @@ public class Login extends HttpServlet {
                     request.setAttribute("fail", "No hay acceso");
                     request.getRequestDispatcher("Vistas/login.jsp").forward(request, response);
                 }
+            }else if(accion != null){
+                loginDAO login = new loginDAO();
+                if(accion.equalsIgnoreCase("buscarUsuario")){
+                   System.out.println("Buscando usuario");
+                   String correo = request.getParameter("correo");
+                   System.out.println("Correo recibido " + correo);
+                   request.setAttribute("DatosUsuario", login.recuperar(correo).get(0));
+                   request.setAttribute("obetenerPregunta", "simon");
+                   request.getRequestDispatcher("Vistas/Recuperar.jsp").forward(request, response);
+                }else if(accion.equalsIgnoreCase("Comparar")){
+                   System.out.println("Comparando");
+                   String correo = request.getParameter("correo");
+                   String respuestaUsuario = request.getParameter("respuesta");
+                   System.out.println("Correo " + correo);
+                   System.out.println("Respuesta Usuario " + respuestaUsuario);
+                   usuario usercomparar = login.recuperar(correo).get(0);
+                    if (usercomparar.getRespuesta().equals(respuestaUsuario)) {
+                        request.setAttribute("datosRecuperados", usercomparar);
+                        request.getRequestDispatcher("Vistas/Recuperar.jsp").forward(request, response);
+                    }else{
+                        request.getRequestDispatcher("Vistas/Recuperar.jsp").forward(request, response);
+                    }
+                }else{
+                   request.getRequestDispatcher("Vistas/Recuperar.jsp").forward(request, response);
+                }
+               
             }
         processRequest(request, response);
     }

@@ -36,4 +36,24 @@ public class loginDAO {
         }
         return datos;
     }
+    
+    public List<usuario> recuperar(String respuesta){
+        List<usuario> datos = new ArrayList<>();
+        usuario dataUsuario = new usuario();
+        String campos = " correo , usuario , clave , pregunta , respuesta ";
+        String condicion = " correo = '" + respuesta + "' ";
+        try{
+            miResultSet = utilidades.buscarUsuario("tb_usuario", campos , condicion);
+            miResultSet.next();
+            dataUsuario.setCorreo(miResultSet.getString("correo"));
+            dataUsuario.setUsuario(miResultSet.getString("usuario"));
+            dataUsuario.setClave(miResultSet.getString("clave"));
+            dataUsuario.setPregunta(miResultSet.getString("pregunta"));
+            dataUsuario.setRespuesta(miResultSet.getString("respuesta"));
+            datos.add(dataUsuario);
+        }catch(SQLException e){
+            System.out.println("Chale fallo la recuperacion " + e);
+        }
+        return datos;
+    }
 }

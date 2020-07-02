@@ -35,7 +35,7 @@
                     <path d="M9 4.5V1l5 5h-3.5A1.5 1.5 0 0 1 9 4.5z" />
                 </svg> IMPRIMIR
             </a>
-            <table class="table table-hover">
+            <table class="table table-hover mt-4">
                 <thead class="thead-dark">
                     <th>ID</th>
                     <th>NOMBRE</th>

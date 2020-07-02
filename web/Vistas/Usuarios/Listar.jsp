@@ -33,7 +33,8 @@
                 </svg> IMPRIMIR
             </a>
         </div>
-        <div class="container-fluid">
+        <div class="container-fluid mt-4">
+            <a href="../Producto/Listar.jsp"></a>
             <table class="table table-responsive mx-2 ">
                 <thead class="thead-dark">
                     <th>ID</th>
@@ -67,7 +68,7 @@
                 <td><%= usuarios.getApellido()%></td>
                 <td><%= usuarios.getCorreo()%></td>
                 <td><%= usuarios.getUsuario()%></td>
-                <td><%= usuarios.getClave()%></td>
+                <td><%= usuarios.getClave().hashCode()%></td>
                 <td>
                        <% if(usuarios.getTipo() == 1){%>
                        Administrador
@@ -83,7 +84,7 @@
                     <%} %>                         
                 </td>
                 <td><%= usuarios.getPregunta() %></td>
-                <td><%= usuarios.getRespuesta()%></td>
+                <td><%= usuarios.getRespuesta().hashCode()%></td>
                 <td><%= usuarios.getFechaRegistro()%></td>
                 <td>
                     <a class="btn btn-warning" href="Usuario?accion=E&id=<%=usuarios.getIdusuario()%>">

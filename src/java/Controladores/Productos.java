@@ -142,7 +142,7 @@ public class Productos extends HttpServlet {
                 String medida = request.getParameter("medida");
                 float stock = Float.parseFloat(request.getParameter("stock"));
                 float precio = Float.parseFloat(request.getParameter("precio"));
-                Date fecha = Date.valueOf(request.getParameter("fecha"));
+                //Date fecha = Date.valueOf(request.getParameter("fecha"));
                 
                 // guardar parametros en el objeto producto
                 
@@ -153,7 +153,7 @@ public class Productos extends HttpServlet {
                 producto.setPrecio(precio);
                 producto.setUnidad_de_medida(medida);
                 producto.setCategoria(categoria);
-                producto.setFecha_entrada(fecha);
+                //producto.setFecha_entrada(fecha);
                 producto.setEstado_producto(estado);
 
                 doPostAgregar(request, response, producto);

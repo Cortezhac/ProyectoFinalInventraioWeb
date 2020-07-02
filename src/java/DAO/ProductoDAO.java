@@ -83,7 +83,7 @@ public class ProductoDAO {
      */
     public void guardarRegistro(Producto productoGuardar){
         //Campos a actualizar
-        String camposInsertar = "nom_producto, des_producto, stock, precio, unidad_de_medida, estado_producto, categoria, fecha_entrada";
+        String camposInsertar = "nom_producto, des_producto, stock, precio, unidad_de_medida, estado_producto, categoria";
         // Nuevos valores en el mismo orden que los campos
         String valoresCampos = "'" + productoGuardar.getNom_producto() + "', '" 
                                    + productoGuardar.getDes_producto() + "', '"
@@ -91,8 +91,7 @@ public class ProductoDAO {
                                    + productoGuardar.getPrecio() + "', '"
                                    + productoGuardar.getUnidad_de_medida() + "', '"
                                    + productoGuardar.getEstado_producto() + "', '"
-                                   + productoGuardar.getCategoria() + "', '"
-                                   + productoGuardar.getFecha_entrada() + "' ";
+                                   + productoGuardar.getCategoria() + "' ";
         util.insertarRegistro(this.nomTabla, camposInsertar, valoresCampos);
     }
     

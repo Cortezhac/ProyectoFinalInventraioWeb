@@ -66,7 +66,12 @@
                                 </select>
 
                             </td>
-                            <td><input type="text" class="form-control" name="estado" value="<%= pro.getEstado_producto()%>" /></td>
+                            <td>
+                                <select class="custom-select" name="estado">
+                                    <option selected value="1">Activo</option>
+                                    <option value="2">Inactivo</option>
+                                </select>
+                            </td>
                             <td><input type="text" class="form-control" name="fecha" value="<%= pro.getFecha_entrada() %>" /></td>
                         </tr>
                         <br>

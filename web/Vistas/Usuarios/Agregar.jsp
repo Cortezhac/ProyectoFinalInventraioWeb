@@ -43,8 +43,8 @@
                             <div class="form-group col-sm-11 col-md-6">
                                 <label class="label-info" for="tipo">Tipo Usuario</label>
                                 <select class="form-control" name="tipo">
-                                    <option value="1">Administrador</option>
-                                    <option value="0" selected>Cliente</option>
+                                    <option value="2">Administrador</option>
+                                    <option value="3" selected>Cliente</option>
                                 </select>
                             </div>
                             <div class="form-group col-sm-11 col-md-6">
@@ -56,7 +56,13 @@
                             </div>
                             <div class="form-group col-sm-11 col-md-6">
                                 <label class="label-info" for="pregunta">Pregunta Recuperacion</label>
-                                <input class="form-control" type="text" name="pregunta" value="">
+                                <select class="custom-select" name="pregunta">
+                                    <option value="" selected>Escoge una</option>
+                                    <option value="Cual fue tu primer apodo">Cual fue tu primer apodo</option>
+                                    <option value="Cual es tu libro favorito">Cual es tu libro favorito</option>
+                                    <option value="Cual fue tu primer celular">Cual fue tu primer celular</option>
+                                    <option value="Cual es tu pelicula favorita">Cual es tu pelicula favorita</option>
+                                </select>
                             </div>
                             <div class="form-group col-sm-11 col-md-6">
                                 <label class="label-info" for="respuesta">Respuesta de Pregunta</label>

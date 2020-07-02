@@ -59,7 +59,10 @@
                 </div>
                 <div class="form-group">
                     <label for="estado">Estado</label>
-                    <input type="text" class="form-control" name="estado" value="1" />
+                    <select class="custom-select" name="estado">
+                        <option selected value="1">Activo</option>
+                        <option value="2">Inactivo</option>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label for="fecha">Fecha de entrada</label>
